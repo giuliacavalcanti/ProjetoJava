@@ -32,6 +32,11 @@ public class Teste {
 		System.out.println(repContas.procurar("9020").getSaldo());
 		c3.creditar(20.0);
 		repContas.atualizar(c3);
+		repContas.remover(c1);
+		System.out.println(repContas.procurar("9020").getSaldo());
+		repContas.inserir(c2);
+		System.out.println(repContas.procurar("9020").getSaldo());
+		repContas.inserir(c1);
 		System.out.println(repContas.procurar("9020").getSaldo());
 	}
 
