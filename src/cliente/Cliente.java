@@ -5,9 +5,9 @@ public class Cliente {
 	private String nome;
 	private String cpf;
         private Endereco endereco;
-	private EnumCliente tipo;
+	private TipoCliente tipo;
 	
-	public Cliente(String nome, String cpf,String rua,String cep,int numero,EnumCliente tipo) {
+	public Cliente(String nome, String cpf,String rua,String cep,int numero,TipoCliente tipo) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
@@ -39,11 +39,11 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public EnumCliente getTipo() {
+    public TipoCliente getTipo() {
         return tipo;
     }
 
-    public void setTipo(EnumCliente tipo) {
+    public void setTipo(TipoCliente tipo) {
         this.tipo = tipo;
     }
 
