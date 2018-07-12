@@ -1,4 +1,4 @@
-package FWInternetBanking;
+package conta;
 
 public class Conta {
 
