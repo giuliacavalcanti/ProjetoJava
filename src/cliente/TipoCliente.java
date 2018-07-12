@@ -9,10 +9,8 @@ package cliente;
  *
  * @author 1545-6 IRON V4
  */
-public class TipoCliente {
-    private enum tipoCliente { 
+public enum TipoCliente {
 		CLASS,
                 VIP,
                 STANDARD
-    }
 }
