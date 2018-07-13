@@ -38,15 +38,15 @@ public class RepositorioContasArray {
     }
     
     public void inserir(Conta conta){
-        if(existe(conta.getNumero())){
-            System.out.println("Conta ja existente");
-            return;
-        }
-        if(indice==99)
-            System.out.println("Repositorio cheio");
-        else{
-            contas[++indice]=conta;
-        }
+//        if(existe(conta.getNumero())){
+//            System.out.println("Conta ja existente");
+//            return;
+//        }
+//        if(indice==99)
+//            System.out.println("Repositorio cheio");
+//        else{
+            contas[indice++]=conta;
+//        }
     }
     
     public void atualizar(Conta conta){
@@ -67,7 +67,8 @@ public class RepositorioContasArray {
     
     private int procurarIndice(String numeroConta){
         int i=0;
-        while(!(contas[i++].getNumero().equals(numeroConta)));
+        while(!(contas[i].getNumero().equals(numeroConta)))
+            i++;
         return i;
     }
     
@@ -80,9 +81,9 @@ public class RepositorioContasArray {
     }
     
     public Conta procurar(String numeroConta){
-        if(!(existe(numeroConta)))
-            return null;
-        else
+//        if(!(existe(numeroConta)))
+//            return null;
+//        else
             return contas[this.procurarIndice(numeroConta)];
     }
 }
