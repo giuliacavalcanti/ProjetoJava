@@ -1,6 +1,6 @@
 package conta;
 
-public class Conta {
+public abstract class Conta {
 
 	private double saldo;
 	private String numero;
@@ -32,9 +32,6 @@ public class Conta {
 		this.saldo += valor;
 	}
 	
-	public void debitar(int valor) {
-		
-		this.saldo -= valor;
-	}
+	public abstract void debitar(double valor);
 	
 }

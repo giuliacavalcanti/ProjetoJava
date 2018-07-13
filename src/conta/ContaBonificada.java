@@ -9,11 +9,12 @@ package conta;
  *
  * @author 1545-6 IRON V4
  */
-public class ContaBonificada extends Conta{
+public class ContaBonificada extends ContaSemImposto{
     private double bonus;
     
     public ContaBonificada(double saldo, String numero) {
         super(saldo, numero);
+        bonus=0.0;
     }
     
     @Override
@@ -27,6 +28,7 @@ public class ContaBonificada extends Conta{
     }
     
     public void realizarBonus(){
-        
+        super.creditar(bonus);
+        bonus=0.0;
     }
 }

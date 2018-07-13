@@ -9,15 +9,14 @@ package conta;
  *
  * @author 1545-6 IRON V4
  */
-public class Poupanca extends ContaSemImposto{
-    
-    public Poupanca(double saldo, String numero) {
+public class ContaSemImposto extends Conta{
+
+    public ContaSemImposto(double saldo, String numero) {
         super(saldo, numero);
     }
     
-    public void renderJuros(double taxa){
-        double saldoAtual = getSaldo();
-        creditar(saldoAtual*taxa);
+    @Override
+    public void debitar(double valor){
+        this.setSaldo(this.getSaldo()-valor);
     }
-    
 }
