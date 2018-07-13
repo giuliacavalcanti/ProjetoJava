@@ -1,6 +1,6 @@
-package FWInternetBanking;
+package conta;
 
-public class Conta {
+public abstract class Conta {
 
 	private double saldo;
 	private String numero;
@@ -27,14 +27,11 @@ public class Conta {
 		this.numero = numero;
 	}
 
-	public void creditar(int valor) {
+	public void creditar(double valor) {
 		
 		this.saldo += valor;
 	}
 	
-	public void debitar(int valor) {
-		
-		this.saldo -= valor;
-	}
+	public abstract void debitar(double valor);
 	
 }
