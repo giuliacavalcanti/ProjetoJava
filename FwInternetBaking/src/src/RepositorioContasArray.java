@@ -10,9 +10,6 @@ public class RepositorioContasArray {
 		this.indice = indice;
 		this.contas = contas;
 	}
-	
-	
-
 
 
 	public static int getTamCacheContas() {

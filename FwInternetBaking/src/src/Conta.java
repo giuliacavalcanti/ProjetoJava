@@ -1,42 +1,14 @@
 package src;
 
-public class Conta {
-	private double saldo;
-	private String numero;
-	
+public class Conta extends ContaAbstrata  {
 	public Conta(double saldo, String numero) {
-		super();
-		this.saldo = saldo;
-		this.numero = numero;
+		super(saldo, numero);
 	}
 	
-
-	public double getSaldo() {
-		return saldo;
-	}
-
-	public String getNumero() {
-		return numero;
-	}
-
+	@Override
 	public void debitar(double valor) {
-		this.saldo = this.saldo - valor;
+		this.setSaldo(this.getSaldo() - valor);
 		//System.out.println("Valor " + valor + " foi debitado \n");
-	}
-	
-	public void creditar(double valor) {
-		this.saldo = this.saldo + valor;
-		//System.out.println("Valor " + valor + " foi creditado \n");
-	}
-
-	public void transferir(Conta conta_destino, double valor) {
-		if (this.saldo >= valor ) {
-			this.debitar(valor);
-			conta_destino.creditar(valor);
-		}
-		else {
-			System.out.println("A conta " + this.numero + " nao possui saldo suficiente");
-		}
 	}
 	
 }

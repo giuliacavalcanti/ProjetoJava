@@ -1,6 +1,6 @@
 package src;
 
-public class Cliente {
+public class Cliente implements CadastraCliente {
 	private String nome;
 	//private Endereco endereco;
 	private String Cpf;
@@ -23,6 +23,5 @@ public class Cliente {
 		//this.endereco = endereco;
 		Cpf = cpf;
 	}
-	
 	
 }
