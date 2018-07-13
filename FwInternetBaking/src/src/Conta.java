@@ -21,12 +21,12 @@ public class Conta {
 
 	public void debitar(double valor) {
 		this.saldo = this.saldo - valor;
-		System.out.println("Valor " + valor + " foi debitado \n");
+		//System.out.println("Valor " + valor + " foi debitado \n");
 	}
 	
 	public void creditar(double valor) {
 		this.saldo = this.saldo + valor;
-		System.out.println("Valor " + valor + " foi creditado \n");
+		//System.out.println("Valor " + valor + " foi creditado \n");
 	}
 
 	public void transferir(Conta conta_destino, double valor) {

@@ -2,7 +2,7 @@ package src;
 
 public class RepositorioContasArray {
 	public static final int TAM_CACHE_CONTAS = 100;
-	private int indice;
+	private int indice = 0;
 	private Conta[] contas = new Conta[TAM_CACHE_CONTAS];
 	
 	public RepositorioContasArray(Conta[] contas, int indice) {
@@ -10,19 +10,22 @@ public class RepositorioContasArray {
 		this.indice = indice;
 		this.contas = contas;
 	}
+	
+	
 
+
+
+	public static int getTamCacheContas() {
+		return TAM_CACHE_CONTAS;
+	}
 
 	public void inserir_conta(Conta conta) {
 		int conta_existe;
 		conta_existe = procuraIndice(conta.getNumero());
-		if(conta_existe == -1) {
+		//if(conta_existe == -1) {
 			contas[indice] = conta;
 			indice++;
 		}
-		else {
-			return;
-		}
-	}
 	
 	
 	public void atualizar(Conta conta) {
@@ -36,6 +39,10 @@ public class RepositorioContasArray {
 		}
 	}
 	
+	public Conta[] getContas() {
+		return contas;
+	}
+
 	public void remover(Conta conta) {
 		int conta_existe;
 		conta_existe = procuraIndice(conta.getNumero());

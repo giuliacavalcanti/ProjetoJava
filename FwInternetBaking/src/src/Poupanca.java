@@ -1,7 +1,8 @@
 package src;
 
 public class Poupanca extends Conta {
-	public Poupanca(String numero, double saldo) {
+	
+	public Poupanca(double saldo, String numero) {
 		super(saldo, numero);
 	}
 	
