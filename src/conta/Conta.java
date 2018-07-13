@@ -27,7 +27,7 @@ public class Conta {
 		this.numero = numero;
 	}
 
-	public void creditar(int valor) {
+	public void creditar(double valor) {
 		
 		this.saldo += valor;
 	}

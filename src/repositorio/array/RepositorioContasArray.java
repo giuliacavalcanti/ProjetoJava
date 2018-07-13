@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package conta;
+package repositorio.array;
+
+import conta.Conta;
 
 /**
  *
@@ -14,9 +16,9 @@ public class RepositorioContasArray {
     private Conta contas[];
     private int indice;
 
-    public RepositorioContasArray(Conta[] contas, int indice) {
-        this.contas = contas;
-        this.indice = indice;
+    public RepositorioContasArray() {
+        indice = 0;
+        contas = new Conta[TAM_CACHE_CONTAS];
     }
 
     public Conta[] getContas() {
