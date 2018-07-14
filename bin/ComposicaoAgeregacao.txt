@@ -1,0 +1,14 @@
+// Composição
+
+class Quadrado{
+	private Lado lado;
+	
+	public Quadrado(double lado){
+	lado = new Lado(lado);
+	
+	}
+}
+
+//Agregação
+Lado lado = new Lado(2);
+Quadrado quadrado = new Quadrado(lado)
