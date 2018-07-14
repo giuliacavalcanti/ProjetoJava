@@ -12,7 +12,7 @@ import conta.Conta;
  * @author 1545-6 IRON V4
  */
 public class RepositorioContasArray {
-    public static final int TAM_CACHE_CONTAS = 100;
+    public static final int TAM_CACHE_CONTAS = 100;//vai para a Interface
     private Conta contas[];
     private int indice;
 
@@ -37,53 +37,36 @@ public class RepositorioContasArray {
         this.indice = indice;
     }
     
-    public void inserir(Conta conta){
-//        if(existe(conta.getNumero())){
-//            System.out.println("Conta ja existente");
-//            return;
-//        }
-//        if(indice==99)
-//            System.out.println("Repositorio cheio");
-//        else{
+    public void inserir(Conta conta){//tem que checar se existe e se esta cheio antes de inserir
             contas[indice++]=conta;
-//        }
     }
     
-    public void atualizar(Conta conta){
-        if(!(existe(conta.getNumero())))
-            System.out.println("Conta nao existente");
-        else
+    public void atualizar(Conta conta){//no controlador tem q testar se existe antes de atualizar
             contas[this.procurarIndice(conta.getNumero())]=conta;
     }
     
-    public void remover(Conta conta){
-        if(!(existe(conta.getNumero())))
-            System.out.println("Conta nao existente");
-        else{
+    public void remover(Conta conta){//tem que checar se existe antes de remover
             contas[this.procurarIndice(conta.getNumero())] = contas[indice];
             contas[indice--] = null;
-        }
     }
     
-    private int procurarIndice(String numeroConta){
+    private int procurarIndice(String numeroConta){//se nao encontrar retorna -1, senao o indice
         int i=0;
-        while(!(contas[i].getNumero().equals(numeroConta)))
+        for(Conta c : contas){
+            if(c.getNumero().equals(numeroConta))
+                return i;
             i++;
-        return i;
+        }
+        return -1;
     }
     
     public boolean existe(String numeroConta){
-        for(int i=0;i<TAM_CACHE_CONTAS;i++){
-            if(contas[i].equals(numeroConta))
-                return true;
-        }
-        return false;
+        if(this.procurarIndice(numeroConta)==-1)
+            return false;
+        return true;
     }
     
-    public Conta procurar(String numeroConta){
-//        if(!(existe(numeroConta)))
-//            return null;
-//        else
+    public Conta procurar(String numeroConta){//tem que checar se existe no controlador antes de procurar
             return contas[this.procurarIndice(numeroConta)];
     }
 }
