@@ -1,4 +1,4 @@
-package interfaces;
+package repositorio.interfaces;
 
 import cliente.Cliente;
 
