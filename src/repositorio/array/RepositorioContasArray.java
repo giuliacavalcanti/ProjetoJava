@@ -20,8 +20,13 @@ public class RepositorioContasArray {
         indice = 0;
         contas = new Conta[TAM_CACHE_CONTAS];
     }
+    
+    
+    public static int getTamCacheContas() {
+		return TAM_CACHE_CONTAS;
+	}
 
-    public Conta[] getContas() {
+	public Conta[] getContas() {
         return contas;
     }
 
@@ -37,6 +42,7 @@ public class RepositorioContasArray {
         this.indice = indice;
     }
     
+
     public void inserir(Conta conta){
 //        if(existe(conta.getNumero())){
 //            System.out.println("Conta ja existente");
@@ -81,9 +87,7 @@ public class RepositorioContasArray {
     }
     
     public Conta procurar(String numeroConta){
-//        if(!(existe(numeroConta)))
-//            return null;
-//        else
-            return contas[this.procurarIndice(numeroConta)];
+                    return contas[this.procurarIndice(numeroConta)];
     }
+
 }
