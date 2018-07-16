@@ -4,7 +4,7 @@ import cliente.Cliente;
 import repositorio.interfaces.IRepCliente;
 
 
-public class CadCliente {
+public class CadCliente{
 	
 	public void inserir(Cliente cliente, IRepCliente irepcliente) {
 		if(irepcliente.getIndice() == irepcliente.getTamCacheContas()){

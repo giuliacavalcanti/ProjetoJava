@@ -3,7 +3,7 @@ package cadconta;
 import conta.Conta;
 import repositorio.interfaces.IRepConta;
 
-public class CadConta {
+public class CadConta{
 
 	public void inserir(Conta conta, IRepConta irepconta) {
 		if(irepconta.getIndice() == irepconta.getTamCacheContas()){
