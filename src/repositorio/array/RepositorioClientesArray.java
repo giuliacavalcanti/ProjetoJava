@@ -6,12 +6,13 @@
 package repositorio.array;
 
 import cliente.Cliente;
+import repositorio.interfaces.IRepCliente;
 
 /**
  *
  * @author 1545-6 IRON V4
  */
-public class RepositorioClientesArray {
+public class RepositorioClientesArray implements IRepCliente{
     public static final int TAM_CACHE_CONTAS = 100;//vai para a Interface
     private Cliente clientes[];
     private int indice;
@@ -50,7 +51,7 @@ public class RepositorioClientesArray {
             clientes[indice--] = null;
     }
     
-    private int procurarIndice(String cpf){//se nao encontrar retorna -1, senao o indice
+    public int procurarIndice(String cpf){//se nao encontrar retorna -1, senao o indice
         int i=0;
         for(Cliente c : clientes){
             if(c.getCpf().equals(cpf))
