@@ -14,8 +14,5 @@ public interface IRepConta {
     public Conta procurar(String num_conta);
     public int procurarIndice(String num_conta);
     public boolean existe(String num_conta);
-<<<<<<< HEAD
     public int getTamCacheContas();
-=======
->>>>>>> da589efc2ac1dc2935d392cc03a0b1ca4499aa22
 }

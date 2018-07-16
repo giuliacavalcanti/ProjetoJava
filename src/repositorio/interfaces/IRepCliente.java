@@ -14,9 +14,6 @@ public interface IRepCliente {
     public Cliente procurar(String cpf);
     public int procurarIndice(String cpf);
     public boolean existe(String cpf);
-<<<<<<< HEAD
     public int getTamCacheContas();
-=======
->>>>>>> da589efc2ac1dc2935d392cc03a0b1ca4499aa22
 	
 }

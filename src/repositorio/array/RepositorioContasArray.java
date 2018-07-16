@@ -6,13 +6,12 @@
 package repositorio.array;
 
 import conta.Conta;
-import repositorio.interfaces.IRepConta;
 
 /**
  *
  * @author 1545-6 IRON V4
  */
-public class RepositorioContasArray implements IRepConta{
+public class RepositorioContasArray {
     public static final int TAM_CACHE_CONTAS = 100;
     private Conta contas[];
     private int indice;
@@ -72,7 +71,7 @@ public class RepositorioContasArray implements IRepConta{
         }
     }
     
-    public int procurarIndice(String numeroConta){
+    private int procurarIndice(String numeroConta){
         int i=0;
         while(!(contas[i].getNumero().equals(numeroConta)))
             i++;
