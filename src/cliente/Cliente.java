@@ -4,7 +4,7 @@ public class Cliente {
 	
 	private String nome;
 	private String cpf;
-        private Endereco endereco;
+    private Endereco endereco;
 	private TipoCliente tipo;
 	
 	public Cliente(String nome, String cpf,String rua,String cep,int numero,TipoCliente tipo) {
