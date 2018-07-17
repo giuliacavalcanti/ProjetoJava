@@ -3,7 +3,8 @@ package repositorio.interfaces;
 import cliente.Cliente;
 
 public interface IRepCliente {
-	
+    
+    public static final int TAM_CACHE_CONTAS = 100;
     public Cliente[] getClientes();
     public void setClientes(Cliente[] clientes);
     public int getIndice();
