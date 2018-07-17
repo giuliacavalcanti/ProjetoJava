@@ -6,13 +6,14 @@
 package repositorio.array;
 
 import conta.Conta;
+import repositorio.interfaces.IRepConta;
 
 /**
  *
  * @author 1545-6 IRON V4
  */
-public class RepositorioContasArray {
-    public static final int TAM_CACHE_CONTAS = 100;
+public class RepositorioContasArray implements IRepConta{
+//    public static final int TAM_CACHE_CONTAS = 100;
     private Conta contas[];
     private int indice;
 
@@ -22,7 +23,7 @@ public class RepositorioContasArray {
     }
     
     
-    public static int getTamCacheContas() {
+    public int getTamCacheContas() {
 		return TAM_CACHE_CONTAS;
 	}
 
@@ -71,7 +72,7 @@ public class RepositorioContasArray {
         }
     }
     
-    private int procurarIndice(String numeroConta){
+    public int procurarIndice(String numeroConta){
         int i=0;
         while(!(contas[i].getNumero().equals(numeroConta)))
             i++;
@@ -89,5 +90,10 @@ public class RepositorioContasArray {
     public Conta procurar(String numeroConta){
                     return contas[this.procurarIndice(numeroConta)];
     }
+
+//    @Override
+//    public int getTamCacheContas() {
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//    }
 
 }
