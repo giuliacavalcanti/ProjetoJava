@@ -5,8 +5,9 @@ import repositorio.interfaces.IRepCliente;
 
 
 public class CadCliente{
+	private IRepCliente irepcliente;
 	
-	public void inserir(Cliente cliente, IRepCliente irepcliente) {
+	public void inserir(Cliente cliente) {
 		if(irepcliente.getIndice() == irepcliente.getTamCacheContas()){
 			System.out.println("Repositorio de Clientes cheio");
 		}
@@ -20,7 +21,7 @@ public class CadCliente{
 		}
 	}
 	
-	public void remover(Cliente cliente, IRepCliente irepcliente) {
+	public void remover(Cliente cliente) {
 		if(irepcliente.existe(cliente.getCpf()) == true) {
 			irepcliente.remover(cliente);
 			System.out.println("A cliente " + cliente.getCpf() + " removida com sucesso");
@@ -31,7 +32,7 @@ public class CadCliente{
 		}
 	}
 	
-	public void atualizar(Cliente cliente, IRepCliente irepcliente) {
+	public void atualizar(Cliente cliente) {
 		if(irepcliente.existe(cliente.getCpf()) == true) {
 			irepcliente.atualizar(cliente);
 			System.out.println("A cliente " + cliente.getCpf() + " atualizada com sucesso");
@@ -39,6 +40,17 @@ public class CadCliente{
 		else {
 			System.out.println("A cliente " + cliente.getCpf() + " nao existe");
 		}
+		
 	}
+	
+	public Cliente procurar(Cliente cliente) {
+		if(irepcliente.existe(cliente.getCpf()) == false) {
+			System.out.println("A cliente " + cliente.getCpf() + " nao existe");
+		}
+		else {
+			return cliente;
+		}
+		return cliente;
+	}
+	
 }
-

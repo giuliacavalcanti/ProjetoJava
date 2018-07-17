@@ -34,4 +34,13 @@ public abstract class Conta {
 	
 	public abstract void debitar(double valor);
 	
+	public void transferir(Conta conta_destino, double valor) {
+		if (this.saldo >= valor ) {
+			this.debitar(valor);
+			conta_destino.creditar(valor);
+		}
+		else {
+			System.out.println("A conta " + this.numero + " nao possui saldo suficiente");
+		}
+	}
 }
