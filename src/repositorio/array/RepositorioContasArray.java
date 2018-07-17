@@ -6,13 +6,12 @@
 package repositorio.array;
 
 import conta.Conta;
-import repositorio.interfaces.IRepConta;
 
 /**
  *
  * @author 1545-6 IRON V4
  */
-public class RepositorioContasArray implements IRepConta{
+public class RepositorioContasArray {
     public static final int TAM_CACHE_CONTAS = 100;
     private Conta contas[];
     private int indice;
@@ -21,8 +20,13 @@ public class RepositorioContasArray implements IRepConta{
         indice = 0;
         contas = new Conta[TAM_CACHE_CONTAS];
     }
+    
+    
+    public static int getTamCacheContas() {
+		return TAM_CACHE_CONTAS;
+	}
 
-    public Conta[] getContas() {
+	public Conta[] getContas() {
         return contas;
     }
 
@@ -38,6 +42,7 @@ public class RepositorioContasArray implements IRepConta{
         this.indice = indice;
     }
     
+
     public void inserir(Conta conta){
 //        if(existe(conta.getNumero())){
 //            System.out.println("Conta ja existente");
@@ -66,7 +71,7 @@ public class RepositorioContasArray implements IRepConta{
         }
     }
     
-    public int procurarIndice(String numeroConta){
+    private int procurarIndice(String numeroConta){
         int i=0;
         while(!(contas[i].getNumero().equals(numeroConta)))
             i++;
@@ -82,9 +87,7 @@ public class RepositorioContasArray implements IRepConta{
     }
     
     public Conta procurar(String numeroConta){
-//        if(!(existe(numeroConta)))
-//            return null;
-//        else
-            return contas[this.procurarIndice(numeroConta)];
+                    return contas[this.procurarIndice(numeroConta)];
     }
+
 }
