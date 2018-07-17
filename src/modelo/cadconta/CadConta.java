@@ -6,6 +6,10 @@ import dados.repositorio.interfaces.IRepConta;
 public class CadConta{
     private IRepConta irepconta;
 
+    public CadConta(IRepConta irepconta) {
+        this.irepconta = irepconta;
+    }
+
     public void inserir(Conta conta) {
             if(irepconta.getIndice() == irepconta.getTamCacheContas()){
                     System.out.println("Repositorio de Contas cheio");

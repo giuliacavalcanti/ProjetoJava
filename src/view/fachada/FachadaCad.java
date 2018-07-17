@@ -38,7 +38,7 @@ public class FachadaCad {
         IRepConta repConta = new RepositorioContasArray();
         contas = new CadConta(repConta);
         IRepCliente repCliente = new RepositorioClientesArray();
-        clientes = new RepositorioClientesArray(repCliente);
+        clientes = new CadCliente(repCliente);
     }
     
     public void atualizar(Cliente c) {
@@ -54,7 +54,7 @@ public class FachadaCad {
     }
 
     public void descadastrarCliente(String cpf) {
-        clientes.remover(cpf);
+        clientes.remover(clientes.procurar(cpf));
     }
     
     public void atualizar(Conta c) {
