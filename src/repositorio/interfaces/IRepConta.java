@@ -3,7 +3,8 @@ package repositorio.interfaces;
 import conta.Conta;
 
 public interface IRepConta {
-
+    
+    public static final int TAM_CACHE_CONTAS = 100;
     public Conta[] getContas();
     public void setContas(Conta[] contas);
     public int getIndice();
