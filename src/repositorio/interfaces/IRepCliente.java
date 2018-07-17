@@ -4,7 +4,7 @@ import cliente.Cliente;
 
 public interface IRepCliente {
     
-    public static final int TAM_CACHE_CONTAS = 100;
+    public static final int TAM_CACHE_CLIENTES = 100;
     public Cliente[] getClientes();
     public void setClientes(Cliente[] clientes);
     public int getIndice();
@@ -15,6 +15,6 @@ public interface IRepCliente {
     public Cliente procurar(String cpf);
     public int procurarIndice(String cpf);
     public boolean existe(String cpf);
-    public int getTamCacheContas();
+    public int getTamCacheClientes();
 	
 }

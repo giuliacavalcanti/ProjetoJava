@@ -13,13 +13,13 @@ public class RepositorioClientesArray implements IRepCliente{
 
     public RepositorioClientesArray() {
         indice = 0;
-        clientes = new Cliente[TAM_CACHE_CONTAS];
+        clientes = new Cliente[TAM_CACHE_CLIENTES];
     }
     
     
 
-    public int getTamCacheContas() {
-		return TAM_CACHE_CONTAS;
+    public int getTamCacheClientes() {
+		return TAM_CACHE_CLIENTES;
 	}
 
 
@@ -68,7 +68,7 @@ public class RepositorioClientesArray implements IRepCliente{
     }
     
     public boolean existe(String cpf){
-        for(int i=0;i<TAM_CACHE_CONTAS;i++){
+        for(int i=0;i<TAM_CACHE_CLIENTES;i++){
             if(clientes[i].equals(cpf))
                 return true;
         }
