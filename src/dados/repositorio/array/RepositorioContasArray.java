@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package repositorio.array;
+package dados.repositorio.array;
 
-import conta.Conta;
-import repositorio.interfaces.IRepConta;
+import modelo.conta.Conta;
+import dados.repositorio.interfaces.IRepConta;
 
 /**
  *

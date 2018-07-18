@@ -1,6 +1,6 @@
-package repositorio.interfaces;
+package dados.repositorio.interfaces;
 
-import conta.Conta;
+import modelo.conta.Conta;
 
 public interface IRepConta {
     

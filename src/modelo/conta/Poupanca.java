@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package conta;
+package modelo.conta;
+
+import modelo.cliente.Cliente;
 
 /**
  *
@@ -11,8 +13,8 @@ package conta;
  */
 public class Poupanca extends ContaSemImposto{
     
-    public Poupanca(double saldo, String numero) {
-        super(saldo, numero);
+    public Poupanca(double saldo, String numero,Cliente cliente) {
+        super(saldo, numero,cliente);
     }
     
     public void renderJuros(double taxa){

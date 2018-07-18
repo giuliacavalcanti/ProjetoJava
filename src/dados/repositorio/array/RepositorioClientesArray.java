@@ -1,7 +1,7 @@
-package repositorio.array;
+package dados.repositorio.array;
 
-import cliente.Cliente;
-import repositorio.interfaces.IRepCliente;
+import modelo.cliente.Cliente;
+import dados.repositorio.interfaces.IRepCliente;
 /*
  *
  * @author 1545-6 IRON V4
@@ -13,20 +13,20 @@ public class RepositorioClientesArray implements IRepCliente{
 
     public RepositorioClientesArray() {
         indice = 0;
-        clientes = new Cliente[TAM_CACHE_CONTAS];
+        clientes = new Cliente[TAM_CACHE_CLIENTES];
     }
     
     
 
-    public int getTamCacheContas() {
-		return TAM_CACHE_CONTAS;
+    public int getTamCacheClientes() {
+		return TAM_CACHE_CLIENTES;
 	}
 
 
 	public Cliente[] getClientes() {
         return clientes;
     }
-
+    @Override
     public void setClientes(Cliente[] clientes) {
         this.clientes = clientes;
     }
@@ -68,7 +68,7 @@ public class RepositorioClientesArray implements IRepCliente{
     }
     
     public boolean existe(String cpf){
-        for(int i=0;i<TAM_CACHE_CONTAS;i++){
+        for(int i=0;i<TAM_CACHE_CLIENTES;i++){
             if(clientes[i].equals(cpf))
                 return true;
         }
@@ -83,4 +83,6 @@ public class RepositorioClientesArray implements IRepCliente{
     		
            return null;
     }
+
+
 }
