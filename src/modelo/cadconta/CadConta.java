@@ -9,87 +9,94 @@ public class CadConta{
     public CadConta(IRepConta irepconta) {
         this.irepconta = irepconta;
     }
+	private IRepConta irepconta;
+	
+	public void inserir(Conta conta) {
+		if(irepconta.getIndice() == irepconta.getTamCacheContas()){
+			System.out.println("Repositorio de Contas cheio");
+		}
+		else if(irepconta.existe(conta.getNumero()) == true) {
+			System.out.println("A conta " + conta.getNumero() + " ja existe");
+		}
+		else {
+			irepconta.inserir(conta);
+			System.out.println("A conta " + conta.getNumero() + " inserida com suceso");
 
-    public void inserir(Conta conta) {
-            if(irepconta.getIndice() == irepconta.getTamCacheContas()){
-                    System.out.println("Repositorio de Contas cheio");
-            }
-            else if(irepconta.existe(conta.getNumero()) == true) {
-                    System.out.println("A conta " + conta.getNumero() + " ja existe");
-            }
-            else {
-                    irepconta.inserir(conta);
-                    System.out.println("A conta " + conta.getNumero() + " inserida com suceso");
+		}
+	}
+	
+	public void remover(Conta conta) {
+		try {
+			
+			irepconta.remover(conta);
 
-            }
-    }
-
-    public void remover(Conta conta) {
-            if(irepconta.existe(conta.getNumero()) == true) {
-                    irepconta.remover(conta);
-                    System.out.println("A conta " + conta.getNumero() + " removida com sucesso");
-
-            }
-            else {
-                    System.out.println("A conta " + conta.getNumero() + " nao existe");
-            }
-    }
-
-    public void atualizar(Conta conta) {
-            if(irepconta.existe(conta.getNumero()) == true) {
-                    irepconta.atualizar(conta);
-                    System.out.println("A conta " + conta.getNumero() + " atualizada com sucesso");
-            }
-            else {
-                    System.out.println("A conta " + conta.getNumero() + " nao existe");
-            }
-    }
-
-    public Conta procurar(String num) {
-            if(irepconta.existe(num) == true) {
-                return irepconta.procurar(num);
-            }
-            else {
-                 System.out.println("A conta " + num + " nao existe ");
-
-            }
-            return null;
-    }
-
-    public void debitar(String num, double valor) {
-            if(irepconta.existe(num) == true) {
-                    Conta conta=irepconta.procurar(num);
-                    conta.debitar(valor);
-                    atualizar(conta);
-            }
-             else {
-                     System.out.println("A conta " + num + " nao existe ");
-             }
-    }
-
-    public void creditar(String num, double valor) {
-            if(irepconta.existe(num) == true) {
-                Conta conta=irepconta.procurar(num);
-                    conta.creditar(valor);
-                    atualizar(conta);
-            }
-            else {
-                    System.out.println("A conta " + num + " nao existe ");
-            }
-    }
-
-    public void transferir(String o, String d, double valor) {
-            if(irepconta.existe(o)) {
-                if(irepconta.existe(d)){
-                    irepconta.procurar(o).transferir(irepconta.procurar(d), valor);
-                            atualizar(irepconta.procurar(d));
-                }
-                else {
-                    System.out.println("A conta destino " + d + " nao existe ");
-                }
-            }
-            else {
-                System.out.println("A conta destino " + o + " nao existe ");
-            }
-    }
+		}
+		 catch (NullPointerException e) {
+				System.err.println("Operação não pode ser realizada");
+			}
+	}
+	
+	public void atualizar(Conta conta) {
+		try {
+			
+			irepconta.atualizar(conta);
+			
+		} catch (NullPointerException e) {
+				System.err.println("Operação não pode ser realizada");
+			}
+	}
+	
+	public Conta procurar(String num_conta) {
+		 
+		Conta conta = null;
+		
+		 try {
+				conta = irepconta.procurar(num_conta);
+			}
+		 catch (NullPointerException e) {
+				System.err.println("A conta não existe");
+			}
+		
+		return conta;
+	}
+	
+	public void debitar(Conta conta, double valor) {
+		
+		try {
+			
+			conta.debitar(valor);
+			atualizar(conta);
+			
+		} catch (NullPointerException e) {
+			
+			System.err.println("Operação não pode ser realizada");
+		
+		}
+	}
+	
+	public void creditar(Conta conta, double valor) {
+		try {
+			
+			conta.creditar(valor);
+			atualizar(conta);
+		}
+		catch (NullPointerException e) {
+			
+			System.err.println("Operação não pode ser realizada");
+		
+		}
+	}
+	
+	public void transferir(Conta conta_destino, double valor) {
+		 try {
+			 
+			conta_destino.transferir(conta_destino, valor);
+			atualizar(conta_destino);
+			
+		} catch (NullPointerException e) {
+			
+			System.err.println("Operação não pode ser realizada");
+		
+		}
+	}
 }
