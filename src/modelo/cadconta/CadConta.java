@@ -11,10 +11,7 @@ public class CadConta{
     }
 
     public void inserir(Conta conta) {
-            if(irepconta.getIndice() == irepconta.getTamCacheContas()){
-                    System.out.println("Repositorio de Contas cheio");
-            }
-            else if(irepconta.existe(conta.getNumero()) == true) {
+            if(irepconta.existe(conta.getNumero()) == true) {
                     System.out.println("A conta " + conta.getNumero() + " ja existe");
             }
             else {
