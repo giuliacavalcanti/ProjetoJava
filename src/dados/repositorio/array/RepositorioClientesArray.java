@@ -16,32 +16,11 @@ public class RepositorioClientesArray implements IRepCliente{
         clientes = new Cliente[TAM_CACHE_CLIENTES];
     }
     
-    
-
-    public int getTamCacheClientes() {
-		return TAM_CACHE_CLIENTES;
-	}
-
-
-	public Cliente[] getClientes() {
-        return clientes;
-    }
-   
-    public void setClientes(Cliente[] clientes) {
-        this.clientes = clientes;
-    }
-
-    public int getIndice() {
-        return indice;
-    }
-
-    public void setIndice(int indice) {
-        this.indice = indice;
-    }
-    
     public void inserir(Cliente cliente){
+    	if(indice < TAM_CACHE_CLIENTES) {
+    		clientes[indice++]=cliente;	
+    	}
     	
-    	clientes[indice++]=cliente;
     }
     
     public void atualizar(Cliente cliente){
@@ -69,7 +48,7 @@ public class RepositorioClientesArray implements IRepCliente{
     
     public boolean existe(String cpf){
         for(int i=0;i<TAM_CACHE_CLIENTES;i++){
-            if(clientes[i].equals(cpf))
+            if(clientes[i].getCpf().equals(cpf))
                 return true;
         }
         return false;
@@ -84,5 +63,5 @@ public class RepositorioClientesArray implements IRepCliente{
            return null;
     }
 
-    
+
 }
