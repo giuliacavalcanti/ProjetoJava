@@ -21,39 +21,13 @@ public class RepositorioContasArray implements IRepConta{
         indice = 0;
         contas = new Conta[TAM_CACHE_CONTAS];
     }
-    
-    
-    public int getTamCacheContas() {
-		return TAM_CACHE_CONTAS;
-	}
-
-	public Conta[] getContas() {
-        return contas;
-    }
-
-    public void setContas(Conta[] contas) {
-        this.contas = contas;
-    }
-
-    public int getIndice() {
-        return indice;
-    }
-
-    public void setIndice(int indice) {
-        this.indice = indice;
-    }
-    
-
+   
     public void inserir(Conta conta){
-//        if(existe(conta.getNumero())){
-//            System.out.println("Conta ja existente");
-//            return;
-//        }
-//        if(indice==99)
-//            System.out.println("Repositorio cheio");
-//        else{
-            contas[indice++]=conta;
-//        }
+    	
+    	if(indice < TAM_CACHE_CONTAS) {
+    		contas[indice++]=conta;
+    	}
+            
     }
     
     public void atualizar(Conta conta){
@@ -81,7 +55,7 @@ public class RepositorioContasArray implements IRepConta{
     
     public boolean existe(String numeroConta){
         for(int i=0;i<TAM_CACHE_CONTAS;i++){
-            if(contas[i].equals(numeroConta))
+            if(contas[i].getNumero().equals(numeroConta))
                 return true;
         }
         return false;
@@ -95,5 +69,5 @@ public class RepositorioContasArray implements IRepConta{
 //    public int getTamCacheContas() {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
-    
+
 }
