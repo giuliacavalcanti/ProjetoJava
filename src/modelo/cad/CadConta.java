@@ -1,9 +1,9 @@
-package modelo.cadconta;
+package modelo.cad;
 
 import modelo.conta.Conta;
 import dados.repositorio.interfaces.IRepConta;
 
-public class CadConta{
+public class CadConta extends CadGen<Conta>{
     private IRepConta irepconta;
 
     public CadConta(IRepConta irepconta) {

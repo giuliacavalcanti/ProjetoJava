@@ -1,10 +1,10 @@
-package modelo.cadcliente;
+package modelo.cad;
 
 import modelo.cliente.Cliente;
 import dados.repositorio.interfaces.IRepCliente;
 
 
-public class CadCliente{
+public class CadCliente extends CadGen<Cliente>{
     private IRepCliente irepcliente;
 
     public CadCliente(IRepCliente irepcliente) {
