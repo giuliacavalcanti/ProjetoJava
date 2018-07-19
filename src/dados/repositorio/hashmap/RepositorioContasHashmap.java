@@ -18,17 +18,17 @@ public class RepositorioContasHashmap implements IRepConta{
 
     @Override
     public void inserir(Conta conta) {
-        contas.put(conta.getNumero(),conta);
+        contas.put(conta.getId(),conta);
     }
 
     @Override
     public void remover(Conta conta) {
-        contas.remove(conta.getNumero());
+        contas.remove(conta.getId());
     }
 
     @Override
     public void atualizar(Conta conta) {
-        remover(consultar(conta.getNumero()));
+        remover(consultar(conta.getId()));
         inserir(conta);
     }
 

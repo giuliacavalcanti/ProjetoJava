@@ -31,31 +31,31 @@ public class RepositorioContasArray implements IRepConta{
     }
     
     public void atualizar(Conta conta){
-        if(!(existe(conta.getNumero())))
+        if(!(existe(conta.getId())))
             System.out.println("Conta nao existente");
         else
-            contas[this.procurarIndice(conta.getNumero())]=conta;
+            contas[this.procurarIndice(conta.getId())]=conta;
     }
     
     public void remover(Conta conta){
-        if(!(existe(conta.getNumero())))
+        if(!(existe(conta.getId())))
             System.out.println("Conta nao existente");
         else{
-            contas[this.procurarIndice(conta.getNumero())] = contas[indice];
+            contas[this.procurarIndice(conta.getId())] = contas[indice];
             contas[indice--] = null;
         }
     }
     
     public int procurarIndice(String numeroConta){
         int i=0;
-        while(!(contas[i].getNumero().equals(numeroConta)))
+        while(!(contas[i].getId().equals(numeroConta)))
             i++;
         return i;
     }
     
     public boolean existe(String numeroConta){
         for(int i=0;i<TAM_CACHE_CONTAS;i++){
-            if(contas[i].getNumero().equals(numeroConta))
+            if(contas[i].getId().equals(numeroConta))
                 return true;
         }
         return false;

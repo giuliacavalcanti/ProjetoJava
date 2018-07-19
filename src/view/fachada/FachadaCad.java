@@ -68,7 +68,7 @@ public class FachadaCad {
     public void cadastrar(Conta c) {
         Cliente cli = c.getCliente();
         if (cli != null) {
-            clientes.consultar(cli.getCpf());
+            clientes.consultar(cli.getId());
             contas.inserir(c);
         } else {
             System.out.println("cliente nulo");

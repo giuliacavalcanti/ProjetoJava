@@ -24,31 +24,31 @@ public class RepositorioClientesArray implements IRepCliente{
     }
     
     public void atualizar(Cliente cliente){
-        if(!(existe(cliente.getCpf())))
+        if(!(existe(cliente.getId())))
             System.out.println("Cliente nao existente");
         else
-        	clientes[this.procurarIndice(cliente.getCpf())]=cliente;
+        	clientes[this.procurarIndice(cliente.getId())]=cliente;
     }
     
     public void remover(Cliente cliente){
-        if(!(existe(cliente.getCpf())))
+        if(!(existe(cliente.getId())))
             System.out.println("Cliente nao existente");
         else{
-        	clientes[this.procurarIndice(cliente.getCpf())] = clientes[indice];
+        	clientes[this.procurarIndice(cliente.getId())] = clientes[indice];
         	clientes[indice--] = null;
         }
     }
     
     public int procurarIndice(String cpf){
         int i=0;
-        while(!(clientes[i].getCpf().equals(cpf)))
+        while(!(clientes[i].getId().equals(cpf)))
             i++;
         return i;
     }
     
     public boolean existe(String cpf){
         for(int i=0;i<TAM_CACHE_CLIENTES;i++){
-            if(clientes[i].getCpf().equals(cpf))
+            if(clientes[i].getId().equals(cpf))
                 return true;
         }
         return false;
