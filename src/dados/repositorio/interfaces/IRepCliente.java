@@ -9,7 +9,5 @@ public interface IRepCliente {
     public void remover(Cliente cliente);
     public void atualizar(Cliente cliente);
     public Cliente procurar(String cpf);
-    public int procurarIndice(String cpf);
-    public boolean existe(String cpf);
 	
 }

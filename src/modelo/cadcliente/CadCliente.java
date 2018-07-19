@@ -12,46 +12,21 @@ public class CadCliente{
     }
 
     public void inserir(Cliente cliente) {
-            if(irepcliente.existe(cliente.getCpf()) == true) {
-                    System.out.println("A cliente " + cliente.getCpf() + " ja existe");
-            }
-            else {
-                    irepcliente.inserir(cliente);
-                    System.out.println("A cliente " + cliente.getCpf() + " inserida com suceso");
-
-            }
+            irepcliente.inserir(cliente);
     }
 
     public void remover(Cliente cliente) {
-            if(irepcliente.existe(cliente.getCpf()) == true) {
-                    irepcliente.remover(cliente);
-                    System.out.println("A cliente " + cliente.getCpf() + " removida com sucesso");
-
-            }
-            else {
-                    System.out.println("A cliente " + cliente.getCpf() + " nao existe");
-            }
+        irepcliente.remover(cliente);
+        System.out.println("A cliente " + cliente.getCpf() + " removida com sucesso");
     }
 
     public void atualizar(Cliente cliente) {
-            if(irepcliente.existe(cliente.getCpf()) == true) {
                     irepcliente.atualizar(cliente);
                     System.out.println("A cliente " + cliente.getCpf() + " atualizada com sucesso");
-            }
-            else {
-                    System.out.println("A cliente " + cliente.getCpf() + " nao existe");
-            }
-
     }
 
     public Cliente procurar(String cpf) {
-            if(irepcliente.existe(cpf)) {
-                    System.out.println("A cliente " + cpf + " nao existe");
-            }
-            else {
-                    return irepcliente.procurar(cpf);
-            }
-            return null;
+        return irepcliente.procurar(cpf);
     }
 
 }

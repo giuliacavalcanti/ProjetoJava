@@ -9,6 +9,4 @@ public interface IRepConta {
     public void remover(Conta conta);
     public void atualizar(Conta conta);
     public Conta procurar(String num_conta);
-    public int procurarIndice(String num_conta);
-    public boolean existe(String num_conta);
 }
