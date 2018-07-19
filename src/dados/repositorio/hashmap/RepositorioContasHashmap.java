@@ -6,13 +6,13 @@ import java.util.*;
 
 public class RepositorioContasHashmap implements IRepConta{
 
-    Map contas = new HashMap();
+    Map<String,Conta> contas = new HashMap<String,Conta>();
 
-    public Map getContas() {
+    public Map<String, Conta> getContas() {
         return contas;
     }
 
-    public void setContas(Map contas) {
+    public void setContas(Map<String, Conta> contas) {
         this.contas = contas;
     }
 
@@ -23,17 +23,17 @@ public class RepositorioContasHashmap implements IRepConta{
 
     @Override
     public void remover(Conta conta) {
-        contas.remove(conta);
+        contas.remove(conta.getNumero());
     }
 
     @Override
     public void atualizar(Conta conta) {
-        remover(procurar(conta.getNumero()));
+        remover(consultar(conta.getNumero()));
         inserir(conta);
     }
 
     @Override
-    public Conta procurar(String num_conta) {
+    public Conta consultar(String num_conta) {
         return (Conta) contas.get(num_conta);
     }
 

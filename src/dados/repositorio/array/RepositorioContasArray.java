@@ -61,7 +61,7 @@ public class RepositorioContasArray implements IRepConta{
         return false;
     }
     
-    public Conta procurar(String numeroConta){
+    public Conta consultar(String numeroConta){
                     return contas[this.procurarIndice(numeroConta)];
     }
 

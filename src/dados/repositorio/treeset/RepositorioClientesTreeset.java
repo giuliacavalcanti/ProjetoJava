@@ -6,14 +6,14 @@ import modelo.cliente.Cliente;
 
 public class RepositorioClientesTreeset implements IRepCliente {
     
-    Set clientes = new TreeSet();
+    Set<Cliente> clientes = new TreeSet<Cliente>();
 
 
-    public Set getClientes() {
+    public Set<Cliente> getClientes() {
         return clientes;
     }
 
-    public void setClientes(Set clientes) {
+    public void setClientes(Set<Cliente> clientes) {
         this.clientes = clientes;
     }
     
@@ -29,13 +29,13 @@ public class RepositorioClientesTreeset implements IRepCliente {
 
     @Override
     public void atualizar(Cliente cliente) {
-        remover(procurar(cliente.getCpf()));
+        remover(consultar(cliente.getCpf()));
         inserir(cliente);
     }
 
     @Override
-    public Cliente procurar(String cpf) {
-        Iterator it = clientes.iterator();
+    public Cliente consultar(String cpf) {
+        Iterator<Cliente> it = clientes.iterator();
         Cliente c;
         while(true) {
             c = (Cliente) it.next();
