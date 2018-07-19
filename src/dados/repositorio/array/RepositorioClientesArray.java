@@ -54,7 +54,7 @@ public class RepositorioClientesArray implements IRepCliente{
         return false;
     }
     
-    public Cliente procurar(String cpf){
+    public Cliente consultar(String cpf){
     		
     		if(existe(cpf)) {
     			 return clientes[this.procurarIndice(cpf)];	

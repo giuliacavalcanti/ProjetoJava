@@ -46,7 +46,7 @@ public class FachadaCad {
     }
 
     public Cliente procurarCliente(String cpf) {
-        return clientes.procurar(cpf);
+        return clientes.consultar(cpf);
     }
 
     public void cadastrar(Cliente c) {
@@ -54,7 +54,7 @@ public class FachadaCad {
     }
 
     public void descadastrarCliente(String cpf) {
-        clientes.remover(clientes.procurar(cpf));
+        clientes.remover(clientes.consultar(cpf));
     }
     
     public void atualizar(Conta c) {
@@ -62,13 +62,13 @@ public class FachadaCad {
     }
 
     public Conta procurarConta(String n) {
-        return contas.procurar(n);
+        return contas.consultar(n);
     }
 
     public void cadastrar(Conta c) {
         Cliente cli = c.getCliente();
         if (cli != null) {
-            clientes.procurar(cli.getCpf());
+            clientes.consultar(cli.getCpf());
             contas.inserir(c);
         } else {
             System.out.println("cliente nulo");
@@ -76,7 +76,7 @@ public class FachadaCad {
     }
     
     public void removerConta(String n) {
-        contas.remover(contas.procurar(n));
+        contas.remover(contas.consultar(n));
     }
 
     public void creditar(String num, double valor) {

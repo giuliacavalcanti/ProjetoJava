@@ -1,9 +1,11 @@
 package modelo.cad;
 
-import modelo.conta.Conta;
+import br.com.framework.*;
 import dados.repositorio.interfaces.IRepConta;
+import modelo.conta.Conta;
 
-public class CadConta extends CadGen<Conta>{
+
+public class CadConta extends CadGenerico<Conta>{
     private IRepConta irepconta;
 
     public CadConta(IRepConta irepconta) {
@@ -25,24 +27,24 @@ public class CadConta extends CadGen<Conta>{
         System.out.println("A conta " + conta.getNumero() + " atualizada com sucesso");
     }
 
-    public Conta procurar(String num) {
-        return irepconta.procurar(num);
+    public Conta consultar(String num) {
+        return irepconta.consultar(num);
     }
 
     public void debitar(String num, double valor) {
-        Conta conta=irepconta.procurar(num);
+        Conta conta=irepconta.consultar(num);
         conta.debitar(valor);
         atualizar(conta);
     }
 
     public void creditar(String num, double valor) {
-        Conta conta=irepconta.procurar(num);
+        Conta conta=irepconta.consultar(num);
         conta.creditar(valor);
         atualizar(conta);
     }
 
     public void transferir(String o, String d, double valor) {
-        irepconta.procurar(o).transferir(irepconta.procurar(d), valor);
-        atualizar(irepconta.procurar(d));
+        irepconta.consultar(o).transferir(irepconta.consultar(d), valor);
+        atualizar(irepconta.consultar(d));
     }
 }

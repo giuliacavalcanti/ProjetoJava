@@ -1,10 +1,11 @@
 package modelo.cad;
 
 import modelo.cliente.Cliente;
+import br.com.framework.CadGenerico;
 import dados.repositorio.interfaces.IRepCliente;
 
 
-public class CadCliente extends CadGen<Cliente>{
+public class CadCliente extends CadGenerico<Cliente>{
     private IRepCliente irepcliente;
 
     public CadCliente(IRepCliente irepcliente) {
@@ -25,8 +26,8 @@ public class CadCliente extends CadGen<Cliente>{
         System.out.println("A cliente " + cliente.getCpf() + " atualizada com sucesso");
     }
 
-    public Cliente procurar(String cpf) {
-        return irepcliente.procurar(cpf);
+    public Cliente consultar(String cpf) {
+        return irepcliente.consultar(cpf);
     }
 
 }
