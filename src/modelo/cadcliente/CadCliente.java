@@ -21,8 +21,8 @@ public class CadCliente{
     }
 
     public void atualizar(Cliente cliente) {
-                    irepcliente.atualizar(cliente);
-                    System.out.println("A cliente " + cliente.getCpf() + " atualizada com sucesso");
+        irepcliente.atualizar(cliente);
+        System.out.println("A cliente " + cliente.getCpf() + " atualizada com sucesso");
     }
 
     public Cliente procurar(String cpf) {
