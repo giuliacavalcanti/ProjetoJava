@@ -7,7 +7,7 @@ import modelo.cliente.Cliente;
 public class RepositorioClientesTreeset implements IRepCliente {
     
     Set clientes = new TreeSet();
-    int indice;
+
 
     public Set getClientes() {
         return clientes;
@@ -16,15 +16,7 @@ public class RepositorioClientesTreeset implements IRepCliente {
     public void setClientes(Set clientes) {
         this.clientes = clientes;
     }
-
-    public int getIndice() {
-        return indice;
-    }
-
-    public void setIndice(int indice) {
-        this.indice = indice;
-    }
-
+    
     @Override
     public void inserir(Cliente cliente) {
         clientes.add(cliente);
@@ -51,27 +43,4 @@ public class RepositorioClientesTreeset implements IRepCliente {
                 return c;
         }
     }
-
-    @Override
-    @SuppressWarnings("empty-statement")
-    public int procurarIndice(String cpf) {
-        Iterator it = clientes.iterator();
-        Cliente c;
-        for(int i = 0;;i++) {
-            c = (Cliente) it.next();
-            if(c.getCpf().equals(cpf))
-                return i;
-        }
-    }
-
-    @Override
-    public boolean existe(String cpf) {
-        return clientes.contains(procurar(cpf));
-    }
-
-    @Override
-    public int getTamCacheClientes() {
-        return TAM_CACHE_CLIENTES;
-    }
-
 }

@@ -6,28 +6,19 @@ import java.util.*;
 
 public class RepositorioContasHashmap implements IRepConta{
 
-    Set contas = new HashSet();
-    int indice;
+    Map contas = new HashMap();
 
-    public Set getContas() {
+    public Map getContas() {
         return contas;
     }
 
-    public void setContas(Set contas) {
+    public void setContas(Map contas) {
         this.contas = contas;
-    }
-
-    public int getIndice() {
-        return indice;
-    }
-
-    public void setIndice(int indice) {
-        this.indice = indice;
     }
 
     @Override
     public void inserir(Conta conta) {
-        contas.add(conta);
+        contas.put(conta.getNumero(),conta);
     }
 
     @Override
@@ -43,34 +34,7 @@ public class RepositorioContasHashmap implements IRepConta{
 
     @Override
     public Conta procurar(String num_conta) {
-        Iterator it = contas.iterator();
-        Conta c;
-        while(true) {
-            c = (Conta) it.next();
-            if(c.getNumero().equals(num_conta))
-                return c;
-        }
-    }
-
-    @Override
-    public int procurarIndice(String num_conta) {
-        Iterator it = contas.iterator();
-        Conta c;
-        for(int i = 0;;i++) {
-            c = (Conta) it.next();
-            if(c.getNumero().equals(num_conta))
-                return i;
-        }
-    }
-
-    @Override
-    public boolean existe(String num_conta) {
-        return contas.contains(procurar(num_conta));
-    }
-
-    @Override
-    public int getTamCacheContas() {
-        return TAM_CACHE_CONTAS;
+        return (Conta) contas.get(num_conta);
     }
 
 }
