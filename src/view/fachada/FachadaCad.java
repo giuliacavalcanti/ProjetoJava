@@ -5,8 +5,8 @@
  */
 package view.fachada;
 
-import modelo.cadcliente.CadCliente;
-import modelo.cadconta.CadConta;
+import modelo.cad.CadCliente;
+import modelo.cad.CadConta;
 import dados.repositorio.array.RepositorioClientesArray;
 import modelo.cliente.Cliente;
 import dados.repositorio.array.RepositorioContasArray;
