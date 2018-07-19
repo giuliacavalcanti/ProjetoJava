@@ -12,10 +12,7 @@ public class CadCliente{
     }
 
     public void inserir(Cliente cliente) {
-            if(irepcliente.getIndice() == irepcliente.getTamCacheClientes()){
-                    System.out.println("Repositorio de Clientes cheio");
-            }
-            else if(irepcliente.existe(cliente.getCpf()) == true) {
+            if(irepcliente.existe(cliente.getCpf()) == true) {
                     System.out.println("A cliente " + cliente.getCpf() + " ja existe");
             }
             else {

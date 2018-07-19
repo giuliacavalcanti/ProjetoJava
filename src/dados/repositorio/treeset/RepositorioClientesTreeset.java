@@ -9,6 +9,10 @@ public class RepositorioClientesTreeset implements IRepCliente {
     Set clientes = new TreeSet();
     int indice;
 
+    public RepositorioClientesTreeset() {
+        this.indice = 0;
+    }
+
     public Set getClientes() {
         return clientes;
     }
@@ -28,11 +32,13 @@ public class RepositorioClientesTreeset implements IRepCliente {
     @Override
     public void inserir(Cliente cliente) {
         clientes.add(cliente);
+        indice++;
     }
 
     @Override
     public void remover(Cliente cliente) {
         clientes.remove(cliente);
+        indice--;
     }
 
     @Override
@@ -67,11 +73,6 @@ public class RepositorioClientesTreeset implements IRepCliente {
     @Override
     public boolean existe(String cpf) {
         return clientes.contains(procurar(cpf));
-    }
-
-    @Override
-    public int getTamCacheClientes() {
-        return TAM_CACHE_CLIENTES;
     }
 
 }

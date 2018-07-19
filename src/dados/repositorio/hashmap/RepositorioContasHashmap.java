@@ -9,6 +9,11 @@ public class RepositorioContasHashmap implements IRepConta{
     Set contas = new HashSet();
     int indice;
 
+    public RepositorioContasHashmap() {
+        this.indice =0;
+    }
+    
+
     public Set getContas() {
         return contas;
     }
@@ -28,11 +33,13 @@ public class RepositorioContasHashmap implements IRepConta{
     @Override
     public void inserir(Conta conta) {
         contas.add(conta);
+        indice++;
     }
 
     @Override
     public void remover(Conta conta) {
         contas.remove(conta);
+        indice--;
     }
 
     @Override
@@ -66,11 +73,6 @@ public class RepositorioContasHashmap implements IRepConta{
     @Override
     public boolean existe(String num_conta) {
         return contas.contains(procurar(num_conta));
-    }
-
-    @Override
-    public int getTamCacheContas() {
-        return TAM_CACHE_CONTAS;
     }
 
 }
