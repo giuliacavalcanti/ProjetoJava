@@ -1,18 +1,18 @@
 package modelo.cliente;
 
-public class Cliente implements Comparable<Cliente>{
+import br.com.framework.EntidadeGenerica;
+
+public class Cliente extends EntidadeGenerica implements Comparable<Cliente> {
 	
 	private String nome;
-	private String cpf;
     private Endereco endereco;
 	private TipoCliente tipo;
 	
 	public Cliente(String nome, String cpf,String rua,String cep,int numero,TipoCliente tipo) {
-		super();
+		super(cpf);
 		this.nome = nome;
-		this.cpf = cpf;
-                endereco = new Endereco(rua,cep,numero);
-                this.tipo = tipo;
+		endereco = new Endereco(rua,cep,numero);
+		this.tipo = tipo;
 	}
 
     public String getNome() {
@@ -21,14 +21,6 @@ public class Cliente implements Comparable<Cliente>{
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public Endereco getEndereco() {

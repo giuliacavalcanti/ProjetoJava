@@ -14,17 +14,17 @@ public class CadConta extends CadGenerico<Conta>{
 
     public void inserir(Conta conta) {
         irepconta.inserir(conta);
-        System.out.println("A conta " + conta.getNumero() + " inserida com suceso");
+        System.out.println("A conta " + conta.getId() + " inserida com suceso");
     }
 
     public void remover(Conta conta) {
         irepconta.remover(conta);
-        System.out.println("A conta " + conta.getNumero() + " removida com sucesso");
+        System.out.println("A conta " + conta.getId() + " removida com sucesso");
     }
 
     public void atualizar(Conta conta) {
         irepconta.atualizar(conta);
-        System.out.println("A conta " + conta.getNumero() + " atualizada com sucesso");
+        System.out.println("A conta " + conta.getId() + " atualizada com sucesso");
     }
 
     public Conta consultar(String num) {

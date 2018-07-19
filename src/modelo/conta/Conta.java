@@ -1,17 +1,16 @@
 package modelo.conta;
 
+import br.com.framework.EntidadeGenerica;
 import modelo.cliente.Cliente;
 
-public abstract class Conta {
+public abstract class Conta extends EntidadeGenerica {
 
     private double saldo;
-    private String numero;
     private Cliente cliente;
-
+    
     public Conta(double saldo, String numero,Cliente cliente) {
-            super();
+    		super(numero);
             this.saldo = saldo;
-            this.numero = numero;
             this.cliente = cliente;
     }
 
@@ -21,14 +20,6 @@ public abstract class Conta {
 
     public void setSaldo(double saldo) {
             this.saldo = saldo;
-    }
-
-    public String getNumero() {
-            return numero;
-    }
-
-    public void setNumero(String numero) {
-            this.numero = numero;
     }
 
     public void creditar(double valor) {
@@ -51,7 +42,7 @@ public abstract class Conta {
             this.debitar(valor);
             conta_destino.creditar(valor);
         } else {
-            System.out.println("A conta " + this.numero + " nao possui saldo suficiente");
+            System.out.println("A conta " + this.getId() + " nao possui saldo suficiente");
         }
     }
         

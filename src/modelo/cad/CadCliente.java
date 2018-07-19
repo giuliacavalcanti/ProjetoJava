@@ -18,12 +18,12 @@ public class CadCliente extends CadGenerico<Cliente>{
 
     public void remover(Cliente cliente) {
         irepcliente.remover(cliente);
-        System.out.println("A cliente " + cliente.getCpf() + " removida com sucesso");
+        System.out.println("A cliente " + cliente.getId() + " removida com sucesso");
     }
 
     public void atualizar(Cliente cliente) {
         irepcliente.atualizar(cliente);
-        System.out.println("A cliente " + cliente.getCpf() + " atualizada com sucesso");
+        System.out.println("A cliente " + cliente.getId() + " atualizada com sucesso");
     }
 
     public Cliente consultar(String cpf) {

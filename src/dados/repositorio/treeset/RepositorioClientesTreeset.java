@@ -29,7 +29,7 @@ public class RepositorioClientesTreeset implements IRepCliente {
 
     @Override
     public void atualizar(Cliente cliente) {
-        remover(consultar(cliente.getCpf()));
+        remover(consultar(cliente.getId()));
         inserir(cliente);
     }
 
@@ -39,7 +39,7 @@ public class RepositorioClientesTreeset implements IRepCliente {
         Cliente c;
         while(true) {
             c = (Cliente) it.next();
-            if(c.getCpf().equals(cpf))
+            if(c.getId().equals(cpf))
                 return c;
         }
     }
