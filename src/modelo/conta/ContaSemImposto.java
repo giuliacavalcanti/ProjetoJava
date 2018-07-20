@@ -23,10 +23,7 @@ public class ContaSemImposto extends Conta{
     	if(this.getSaldo() >= valor) {
     		this.setSaldo(this.getSaldo() - valor);
     	} else {
-    		
-    	SaldoInsuficienteException sie = new SaldoInsuficienteException(this.getSaldo(),valor);
-    	throw sie;
-    	
+    	throw new SaldoInsuficienteException(this.getSaldo(),valor);
     	}
         
     }
