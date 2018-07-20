@@ -41,7 +41,7 @@ public class CadConta extends CadGenerico<Conta>{
         
         } catch (SaldoInsuficienteException sie) {
         	
-        	System.err.println(sie.getErrMsg());
+        	System.err.println(sie.getMessage());
         }
         
     }
@@ -60,7 +60,7 @@ public class CadConta extends CadGenerico<Conta>{
         
     	} catch(SaldoInsuficienteException sie) {
     		
-    		System.err.print(sie.getErrMsg());
+    		System.err.print(sie.getMessage());
     	}
     	
     }

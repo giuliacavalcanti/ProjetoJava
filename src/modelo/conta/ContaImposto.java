@@ -18,8 +18,8 @@ public class ContaImposto extends Conta{
 		if(saldo >= valor + imposto) {
 			this.setSaldo(saldo - (valor + imposto));
 		} else {
-			SaldoInsuficienteException sie = new SaldoInsuficienteException(saldo, valor);
-			throw sie;
+			
+			throw new SaldoInsuficienteException(saldo, valor);
 		}
 				
 		
