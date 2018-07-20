@@ -112,13 +112,20 @@ public class JDBCConnectionUtil implements IRepClientes {
 	public void atualizar(Cliente cliente) {
 		try {
 			connection = getConnection();
-			Statement stmt = connection.createStatement();
-			String sql = "UPDATE FROM TB_CLIENTE WHERE "+cliente.getId();
+			String sql = PreparedStatement.update;
+			Statement stmt = connection.prepareStatement(sql);
 			stmt.executeUpdate(sql);
+			commitTransaction();
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			try {
+				rollbackTransaction();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 
@@ -127,8 +134,9 @@ public class JDBCConnectionUtil implements IRepClientes {
 	@Override
 	public Cliente consultar(String c) {
 		try {
-			Statement stmt = connection.createStatement();
-			String sql = "SELECT FROM TB_CLIENTE WHERE "+ c;
+			connection = getConnection();
+			String sql = PreparedStatement.getConsultar();
+			Statement stmt = connection.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()) {
 				String cpf = rs.getString("Cpf");
@@ -137,6 +145,12 @@ public class JDBCConnectionUtil implements IRepClientes {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			try {
+				rollbackTransaction();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		return null;
 	}
@@ -147,12 +161,20 @@ public class JDBCConnectionUtil implements IRepClientes {
 	public void inserir(Cliente cliente) {
 		try {
 			connection = getConnection();
-			Statement stmt = connection.createStatement();			String sql = "INSERT INTO TB_CLIENTES VALUES ("+cliente.getId()+", "+cliente.getNome()+")";
+			String sql = PreparedStatement.getInserir();
+			Statement stmt = connection.prepareStatement(sql);
 			stmt.executeUpdate(sql);
+			commitTransaction();
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			try {
+				rollbackTransaction();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 		
 	}
@@ -163,8 +185,10 @@ public class JDBCConnectionUtil implements IRepClientes {
 	public void remover(Cliente cliente) {
 		try {
 			connection = getConnection();
-			Statement stmt = connection.createStatement();			String sql = "DELETE FROM TB_CLIENTE WHERE "+cliente.getId();
+			String sql = PreparedStatement.getRemover();
+			Statement stmt = connection.prepareStatement(sql);
 			stmt.executeUpdate(sql);
+			commitTransaction();
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
