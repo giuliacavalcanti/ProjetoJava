@@ -5,6 +5,7 @@
  */
 package modelo.conta;
 
+import exception.conta.SaldoInsuficienteException;
 import modelo.cliente.Cliente;
 
 /**
@@ -18,7 +19,15 @@ public class ContaSemImposto extends Conta{
     }
     
     @Override
-    public void debitar(double valor){
-        this.setSaldo(this.getSaldo()-valor);
+    public void debitar(double valor) throws SaldoInsuficienteException{
+    	if(this.getSaldo() >= valor) {
+    		this.setSaldo(this.getSaldo() - valor);
+    	} else {
+    		
+    	SaldoInsuficienteException sie = new SaldoInsuficienteException(this.getSaldo(),valor);
+    	throw sie;
+    	
+    	}
+        
     }
 }

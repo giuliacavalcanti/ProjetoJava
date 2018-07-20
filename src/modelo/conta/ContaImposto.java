@@ -1,5 +1,6 @@
 package modelo.conta;
 
+import exception.conta.SaldoInsuficienteException;
 import modelo.cliente.Cliente;
 
 public class ContaImposto extends Conta{
@@ -11,13 +12,14 @@ public class ContaImposto extends Conta{
 		// TODO Auto-generated constructor stub
 	}
 
-	public void debitar(double valor) {
+	public void debitar(double valor) throws SaldoInsuficienteException {
 		double imposto = valor * taxa;
 		double saldo = this.getSaldo();
 		if(saldo >= valor + imposto) {
 			this.setSaldo(saldo - (valor + imposto));
 		} else {
-			System.out.println("Saldo insuficiente");
+			SaldoInsuficienteException sie = new SaldoInsuficienteException(saldo, valor);
+			throw sie;
 		}
 				
 		

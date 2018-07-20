@@ -1,7 +1,8 @@
 package modelo.cad;
 
-import br.com.framework.*;
+import br.com.framework.CadGenerico;
 import dados.repositorio.interfaces.IRepConta;
+import exception.conta.SaldoInsuficienteException;
 import modelo.conta.Conta;
 
 
@@ -14,7 +15,6 @@ public class CadConta extends CadGenerico<Conta>{
 
     public void inserir(Conta conta) {
         irepconta.inserir(conta);
-        System.out.println("A conta " + conta.getId() + " inserida com suceso");
     }
 
     public void remover(Conta conta) {
@@ -32,9 +32,18 @@ public class CadConta extends CadGenerico<Conta>{
     }
 
     public void debitar(String num, double valor) {
-        Conta conta=irepconta.consultar(num);
+        
+        try {
+        
+        Conta conta= irepconta.consultar(num);
         conta.debitar(valor);
         atualizar(conta);
+        
+        } catch (SaldoInsuficienteException sie) {
+        	
+        	System.err.println(sie.getErrMsg());
+        }
+        
     }
 
     public void creditar(String num, double valor) {
@@ -44,7 +53,15 @@ public class CadConta extends CadGenerico<Conta>{
     }
 
     public void transferir(String o, String d, double valor) {
+    	try {
+    		
         irepconta.consultar(o).transferir(irepconta.consultar(d), valor);
         atualizar(irepconta.consultar(d));
+        
+    	} catch(SaldoInsuficienteException sie) {
+    		
+    		System.err.print(sie.getErrMsg());
+    	}
+    	
     }
 }
