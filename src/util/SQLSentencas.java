@@ -1,6 +1,8 @@
 package until;
 
-public class PreparedStatement {
+
+
+public class SQLSentencas {
 	static final String inserir = "INSERT INTO TB_CLIENTES VALUES (?, ?, ?)";
 	static final String remover = "DELETE FROM TB_CLIENTE WHERE ID = ? ";
 	static final String update = "UPDATE USUARIO SET NOME = ? WHERE ID = ?";

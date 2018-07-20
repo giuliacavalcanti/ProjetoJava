@@ -3,11 +3,13 @@ package until;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.PreparedStatement;
 
 import java.sql.Savepoint;
 
 import dados.IRepClientes;
 import negocio.Cliente;
+import negocio.Endereco;
 
 import java.sql.Statement;
 import java.sql.Connection;
@@ -112,8 +114,14 @@ public class JDBCConnectionUtil implements IRepClientes {
 	public void atualizar(Cliente cliente) {
 		try {
 			connection = getConnection();
-			String sql = PreparedStatement.update;
-			Statement stmt = connection.prepareStatement(sql);
+			String sql = SQLSentencas.update;
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setString(1, cliente.getNome());
+			if(cliente.getEndereco() != null) {
+				inserir_endereco(cliente.getEndereco());
+			}
+			stmt.setObject(2, cliente.getEndereco());
+			stmt.setObject(3, cliente.getEndereco());
 			stmt.executeUpdate(sql);
 			commitTransaction();
 		
@@ -135,8 +143,9 @@ public class JDBCConnectionUtil implements IRepClientes {
 	public Cliente consultar(String c) {
 		try {
 			connection = getConnection();
-			String sql = PreparedStatement.getConsultar();
-			Statement stmt = connection.prepareStatement(sql);
+			String sql = SQLSentencas.getConsultar();
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setString(1, c);
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()) {
 				String cpf = rs.getString("Cpf");
@@ -161,8 +170,12 @@ public class JDBCConnectionUtil implements IRepClientes {
 	public void inserir(Cliente cliente) {
 		try {
 			connection = getConnection();
-			String sql = PreparedStatement.getInserir();
-			Statement stmt = connection.prepareStatement(sql);
+			String sql = SQLSentencas.getInserir();
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setString(1, cliente.getNome());
+			if(cliente.getEndereco() != null) {
+				inserir_endereco(cliente.getEndereco());
+			}
 			stmt.executeUpdate(sql);
 			commitTransaction();
 		
@@ -185,10 +198,27 @@ public class JDBCConnectionUtil implements IRepClientes {
 	public void remover(Cliente cliente) {
 		try {
 			connection = getConnection();
-			String sql = PreparedStatement.getRemover();
-			Statement stmt = connection.prepareStatement(sql);
+			String sql = SQLSentencas.getRemover();
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setString(1,cliente.getId());
 			stmt.executeUpdate(sql);
 			commitTransaction();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void inserir_endereco(Endereco endereco) {
+		try {
+			connection = getConnection();
+			Statement stmt = connection.createStatement();
+			String sql = "INSERT INTO TB_ENDERECO VALUES("+endereco.getCep()+","+endereco.getNumero()+","+endereco.getRua()+")";
+			stmt.executeUpdate(sql);
+			commitTransaction();
+			return;
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
