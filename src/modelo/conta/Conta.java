@@ -1,6 +1,7 @@
 package modelo.conta;
 
 import br.com.framework.EntidadeGenerica;
+import exception.conta.SaldoInsuficienteException;
 import modelo.cliente.Cliente;
 
 public abstract class Conta extends EntidadeGenerica {
@@ -27,7 +28,7 @@ public abstract class Conta extends EntidadeGenerica {
             this.saldo += valor;
     }
 
-    public abstract void debitar(double valor);
+    public abstract void debitar(double valor) throws SaldoInsuficienteException;
 
     public Cliente getCliente() {
         return cliente;
@@ -37,13 +38,11 @@ public abstract class Conta extends EntidadeGenerica {
         this.cliente = cliente;
     }
     
-    public void transferir(Conta conta_destino, double valor) {
-        if (this.saldo >= valor) {
+    public void transferir(Conta conta_destino, double valor) throws SaldoInsuficienteException {
+    	
             this.debitar(valor);
             conta_destino.creditar(valor);
-        } else {
-            System.out.println("A conta " + this.getId() + " nao possui saldo suficiente");
-        }
+       
     }
         
 }
