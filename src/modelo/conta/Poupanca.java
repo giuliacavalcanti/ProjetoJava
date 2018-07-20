@@ -13,8 +13,8 @@ import modelo.cliente.Cliente;
  */
 public class Poupanca extends ContaSemImposto{
     
-    public Poupanca(double saldo, String numero,Cliente cliente) {
-        super(saldo, numero,cliente);
+    public Poupanca(double saldo, String numero,Cliente cliente,String id) {
+        super(saldo, numero,cliente,id);
     }
     
     public void renderJuros(double taxa){

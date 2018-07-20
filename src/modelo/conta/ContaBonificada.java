@@ -14,8 +14,8 @@ import modelo.cliente.Cliente;
 public class ContaBonificada extends ContaSemImposto{
     private double bonus;
     
-    public ContaBonificada(double saldo, String numero,Cliente cliente) {
-        super(saldo, numero,cliente);
+    public ContaBonificada(double saldo, String numero,Cliente cliente,String id) {
+        super(saldo, numero,cliente,id);
         bonus=0.0;
     }
     

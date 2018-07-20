@@ -5,15 +5,25 @@ import br.com.framework.EntidadeGenerica;
 public class Cliente extends EntidadeGenerica implements Comparable<Cliente> {
 	
 	private String nome;
-    private Endereco endereco;
+        private Endereco endereco;
 	private TipoCliente tipo;
-	
-	public Cliente(String nome, String cpf,String rua,String cep,int numero,TipoCliente tipo) {
-		super(cpf);
+	private String cpf;
+        
+	public Cliente(String nome, String cpf,String rua,String cep,int numero,TipoCliente tipo,String id) {
+		super(id);
+                this.cpf=cpf;
 		this.nome = nome;
 		endereco = new Endereco(rua,cep,numero);
 		this.tipo = tipo;
 	}
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
     public String getNome() {
         return nome;

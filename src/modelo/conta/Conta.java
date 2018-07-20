@@ -8,12 +8,22 @@ public abstract class Conta extends EntidadeGenerica {
 
     private double saldo;
     private Cliente cliente;
-    
-    public Conta(double saldo, String numero,Cliente cliente) {
-    		super(numero);
+    private String numero;
+    public Conta(double saldo, String numero,Cliente cliente,String id) {
+            super(id);
             this.saldo = saldo;
             this.cliente = cliente;
+            this.numero=numero;
     }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+    
 
     public double getSaldo() {
             return saldo;
