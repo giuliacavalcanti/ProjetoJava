@@ -12,6 +12,7 @@ import modelo.cliente.Cliente;
 import dados.repositorio.array.RepositorioContasArray;
 import dados.repositorio.interfaces.IRepCliente;
 import dados.repositorio.interfaces.IRepConta;
+import exception.fachada.ClienteNuloException;
 import modelo.conta.Conta;
 
 /**
@@ -65,13 +66,13 @@ public class FachadaCad {
         return contas.consultar(n);
     }
 
-    public void cadastrar(Conta c) {
+    public void cadastrar(Conta c) throws ClienteNuloException {
         Cliente cli = c.getCliente();
         if (cli != null) {
             clientes.consultar(cli.getId());
             contas.inserir(c);
         } else {
-            System.out.println("cliente nulo");
+            throw new ClienteNuloException();
         }
     }
     
