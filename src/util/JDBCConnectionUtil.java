@@ -1,5 +1,6 @@
-package until;
+package util;
 
+import dados.repositorio.interfaces.IRepCliente;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,16 +8,14 @@ import java.sql.PreparedStatement;
 
 import java.sql.Savepoint;
 
-import dados.IRepClientes;
-import negocio.Cliente;
-import negocio.Endereco;
 
 import java.sql.Statement;
 import java.sql.Connection;
+import modelo.cliente.*;
 
 
 
-public class JDBCConnectionUtil implements IRepClientes {
+public class JDBCConnectionUtil implements IRepCliente {
 	
 	private static String driver;
 
