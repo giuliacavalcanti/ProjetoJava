@@ -1,6 +1,6 @@
 package util;
 
-import dados.repositorio.interfaces.IRepCliente;
+
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +15,7 @@ import modelo.cliente.*;
 
 
 
-public class JDBCConnectionUtil implements IRepCliente {
+public class JDBCConnectionUtil {
 	
 	private static String driver;
 
@@ -47,6 +47,7 @@ public class JDBCConnectionUtil implements IRepCliente {
 
 	}
 
+	
 	public static Connection getConnection() throws SQLException {
 
 		if (connection == null || connection.isClosed()) {
@@ -105,125 +106,6 @@ public class JDBCConnectionUtil implements IRepCliente {
 
 		connection.setAutoCommit(true);
 
-	}
-
-
-
-	@Override
-	public void atualizar(Cliente cliente) {
-		try {
-			connection = getConnection();
-			String sql = SQLSentencas.update;
-			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, cliente.getNome());
-			if(cliente.getEndereco() != null) {
-				inserir_endereco(cliente.getEndereco());
-			}
-			stmt.setObject(2, cliente.getEndereco());
-			stmt.setObject(3, cliente.getEndereco());
-			stmt.executeUpdate(sql);
-			commitTransaction();
-		
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			try {
-				rollbackTransaction();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-	}
-
-
-
-	@Override
-	public Cliente consultar(String c) {
-		try {
-			connection = getConnection();
-			String sql = SQLSentencas.getConsultar();
-			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, c);
-			ResultSet rs = stmt.executeQuery(sql);
-			while(rs.next()) {
-				String cpf = rs.getString("Cpf");
-				String nome = rs.getString("NOME");
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			try {
-				rollbackTransaction();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-		return null;
-	}
-
-
-
-	@Override
-	public void inserir(Cliente cliente) {
-		try {
-			connection = getConnection();
-			String sql = SQLSentencas.getInserir();
-			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1, cliente.getNome());
-			if(cliente.getEndereco() != null) {
-				inserir_endereco(cliente.getEndereco());
-			}
-			stmt.executeUpdate(sql);
-			commitTransaction();
-		
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			try {
-				rollbackTransaction();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		}
-		
-	}
-
-
-
-	@Override
-	public void remover(Cliente cliente) {
-		try {
-			connection = getConnection();
-			String sql = SQLSentencas.getRemover();
-			PreparedStatement stmt = connection.prepareStatement(sql);
-			stmt.setString(1,cliente.getId());
-			stmt.executeUpdate(sql);
-			commitTransaction();
-		
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
-	
-	public void inserir_endereco(Endereco endereco) {
-		try {
-			connection = getConnection();
-			Statement stmt = connection.createStatement();
-			String sql = "INSERT INTO TB_ENDERECO VALUES("+endereco.getCep()+","+endereco.getNumero()+","+endereco.getRua()+")";
-			stmt.executeUpdate(sql);
-			commitTransaction();
-			return;
-		
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 	}
 
 }
