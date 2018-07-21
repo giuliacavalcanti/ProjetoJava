@@ -14,8 +14,8 @@ import modelo.cliente.Cliente;
  */
 public class ContaSemImposto extends Conta{
 
-    public ContaSemImposto(double saldo, String numero,Cliente cliente) {
-        super(saldo, numero,cliente);
+    public ContaSemImposto(double saldo, String numero,Cliente cliente,String id) {
+        super(saldo, numero,cliente,id);
     }
     
     @Override

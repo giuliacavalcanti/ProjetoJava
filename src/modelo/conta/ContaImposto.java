@@ -7,8 +7,8 @@ public class ContaImposto extends Conta{
 
 	private static final double taxa = 0.001;
 	
-	public ContaImposto(double saldo, String numero,Cliente cliente) {
-		super(saldo, numero,cliente);
+	public ContaImposto(double saldo, String numero,Cliente cliente,String id) {
+		super(saldo, numero,cliente,id);
 		// TODO Auto-generated constructor stub
 	}
 
