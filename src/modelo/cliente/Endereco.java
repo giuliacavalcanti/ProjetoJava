@@ -9,7 +9,7 @@ package modelo.cliente;
  *
  * @author 1545-6 IRON V4
  */
-class Endereco {
+public class Endereco {
     private String rua;
     private String cep;
     private int numero;
