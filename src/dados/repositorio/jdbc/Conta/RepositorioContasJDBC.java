@@ -48,6 +48,30 @@ public class RepositorioContasJDBC implements IRepConta{
 		
 	}
 
+    public Conta consultarPorCpf(String cpf) {
+    	
+    	try {
+    		Connection connection = getConnection();
+    		String sql = "SELECT FROM TB_CONTA WHERE tb_cliente_cpf = ?";
+    		PreparedStatement stmt = connection.prepareStatement(sql);
+    		stmt.setString(1, cpf);
+    		ResultSet rs = stmt.executeQuery(sql);
+    		while(rs.next()) {
+                String num = rs.getString("Numero");
+                double saldo = rs.getDouble("Saldo");
+    		}
+    	} catch (SQLException e) {
+    		e.printStackTrace();
+    	} try {
+			rollbackTransaction();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+    	return null;
+    	
+    }
+    
+
     @Override
 	public Conta consultar(String c) {
 		try {
@@ -74,7 +98,8 @@ public class RepositorioContasJDBC implements IRepConta{
     @Override
 	public void atualizar(Conta conta) {
 		try {
-                    Connection connection = getConnection();
+			
+			Connection connection = getConnection();
                     String sql = "UPDATE CONTA SET SALDO = ? WHERE ID = ?";
                     PreparedStatement stmt = connection.prepareStatement(sql);
                     stmt.setDouble(1, conta.getSaldo());
