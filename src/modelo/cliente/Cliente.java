@@ -1,22 +1,40 @@
 package modelo.cliente;
 
 import br.com.framework.EntidadeGenerica;
+import javax.persistence.*;
 
+@Entity
+@Table (name= "tb_cliente")
 public class Cliente extends EntidadeGenerica implements Comparable<Cliente> {
 	
-	private String nome;
-        private Endereco endereco;
-	private TipoCliente tipo;
-	private String cpf;
-        
-	public Cliente(String nome, String cpf,String rua,String cep,int numero,TipoCliente tipo,String id) {
-		super(id);
-                this.cpf=cpf;
-		this.nome = nome;
-		endereco = new Endereco(rua,cep,numero);
-		this.tipo = tipo;
-	}
+    @Column ( name="nome")
+    private String nome;
+    
+    @OneToOne(
+        cascade = CascadeType.ALL
+    )
+    @PrimaryKeyJoinColumn
+    private Endereco endereco;
+    
+    
+    private TipoCliente tipo;
+    
+    @Id
+    @Column ( name="cpf")
+    private String cpf;
 
+    public Cliente(String nome, String cpf,String cep,int numero,TipoCliente tipo,String id) {
+            super(id);
+            this.cpf=cpf;
+            this.nome = nome;
+            endereco = new Endereco(cep,numero);
+            this.tipo = tipo;
+    }
+
+    public Cliente() {
+        super("");
+    }
+    
     public String getCpf() {
         return cpf;
     }

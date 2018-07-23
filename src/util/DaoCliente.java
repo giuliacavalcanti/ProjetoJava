@@ -122,7 +122,7 @@ public class DaoCliente implements IRepCliente {
 		try {
 			connection = JDBCConnectionUtil.getConnection();
 			Statement stmt = connection.createStatement();
-			String sql = "INSERT INTO TB_ENDERECO VALUES("+endereco.getCep()+","+endereco.getNumero()+","+endereco.getRua()+")";
+			String sql = "INSERT INTO TB_ENDERECO VALUES("+endereco.getCep()+","+endereco.getNumero()+")";
 			stmt.executeUpdate(sql);
 			bd.commitTransaction();
 			return;
