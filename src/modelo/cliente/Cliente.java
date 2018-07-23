@@ -1,7 +1,11 @@
 package modelo.cliente;
 
-import br.com.framework.EntidadeGenerica;
+import java.util.ArrayList;
+
 import javax.persistence.*;
+
+import br.com.framework.EntidadeGenerica;
+import modelo.conta.Conta;
 
 @Entity
 @Table (name= "tb_cliente")
@@ -30,6 +34,12 @@ public class Cliente extends EntidadeGenerica implements Comparable<Cliente> {
             endereco = new Endereco(cep,numero);
             this.tipo = tipo;
     }
+    
+   @OneToMany(
+		   mappedBy="cliente",
+		   fetch = FetchType.LAZY
+		   )
+   private ArrayList<Conta> contas;
 
     public Cliente() {
         super("");
