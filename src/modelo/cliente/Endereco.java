@@ -1,32 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo.cliente;
 
-/**
- *
- * @author 1545-6 IRON V4
- */
-public class Endereco {
-    private String rua;
-    private String cep;
-    private int numero;
+import javax.persistence.*;
 
-    public Endereco(String rua, String cep, int numero) {
-        this.rua = rua;
+@Entity
+@Table (name ="tb_endereco")
+public class Endereco {
+    
+    @Column(name ="cep")
+    private String cep;
+    
+    @Column(name ="numero")
+    private int numero;
+    
+    @Id
+    @Column(name ="tb_cliente_cpf")
+    private String clienteCpf;
+
+    public Endereco(String cep, int numero) {
         this.cep = cep;
         this.numero = numero;
     }
 
-    public String getRua() {
-        return rua;
+    public Endereco() {
     }
 
-    public void setRua(String rua) {
-        this.rua = rua;
+    
+    public String getClienteCpf() {
+        return clienteCpf;
     }
+
+    public void setClienteCpf(String clienteCpf) {
+        this.clienteCpf = clienteCpf;
+    }
+    
 
     public String getCep() {
         return cep;
