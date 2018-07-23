@@ -1,14 +1,50 @@
 package modelo.conta;
 
+import javax.persistence.*;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import br.com.framework.EntidadeGenerica;
 import exception.conta.SaldoInsuficienteException;
 import modelo.cliente.Cliente;
 
-public abstract class Conta extends EntidadeGenerica {
+@Entity
+@Table(name="tb_conta")
 
-    private double saldo;
-    private Cliente cliente;
+
+public abstract class Conta extends EntidadeGenerica {
+    //private double saldo;
+    //private Cliente cliente;
+    
+    @Id
+    @Column(
+    		name = "numero") 
     private String numero;
+    
+    
+    @Column(
+    		name = "saldo")
+    private double saldo;
+   
+    @ManyToOne(
+		fetch = FetchType.EAGER
+		)
+		@JoinColumn(
+		name= "tb_cliente_cpf"
+		)
+	private Cliente cliente;
+    
+   public Conta() {
+	  super("");
+   }
+   
+   
+    
+    
+    
+    
     public Conta(double saldo, String numero,Cliente cliente,String id) {
             super(id);
             this.saldo = saldo;
