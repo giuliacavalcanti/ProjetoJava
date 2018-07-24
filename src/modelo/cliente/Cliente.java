@@ -1,11 +1,24 @@
 package modelo.cliente;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 import br.com.framework.EntidadeGenerica;
 import modelo.conta.Conta;
+import modelo.gerente.Gerente;
 
 @Entity
 @Table (name= "tb_cliente")
@@ -41,6 +54,13 @@ public class Cliente extends EntidadeGenerica implements Comparable<Cliente> {
 		   )
    private ArrayList<Conta> contas;
 
+  
+   @ManyToMany (targetEntity = Gerente.class)
+   @JoinTable(name = "tb_gerentes_cliente",
+   joinColumns={@JoinColumn(name="tb_cliente_cpf")},
+   inverseJoinColumns= {@JoinColumn(name="tb_gerente_id")})
+   private Collection<Gerente> gerentes;
+   
     public Cliente() {
         super("");
     }
