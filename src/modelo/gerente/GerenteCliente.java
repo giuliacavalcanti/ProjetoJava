@@ -2,10 +2,12 @@ package modelo.gerente;
 
 import br.com.framework.EntidadeGenerica;
 
+
 public class GerenteCliente extends EntidadeGenerica{
 
 	private int gerenteId;
 	private String clienteCpf;
+	
 	
 	public GerenteCliente(String id, int gerenteId, String clienteCpf) {
 		super(id);
