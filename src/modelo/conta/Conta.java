@@ -8,13 +8,14 @@ import javax.persistence.Table;
 
 import br.com.framework.EntidadeGenerica;
 import exception.conta.SaldoInsuficienteException;
+import java.io.Serializable;
 import modelo.cliente.Cliente;
 
 @Entity
 @Table(name="tb_conta")
 
 
-public abstract class Conta extends EntidadeGenerica {
+public abstract class Conta extends EntidadeGenerica implements Serializable {
     //private double saldo;
     //private Cliente cliente;
     
