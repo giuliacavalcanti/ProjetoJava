@@ -9,12 +9,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Properties;
 
 import dados.repositorio.interfaces.IRepGerente;
 import modelo.gerente.Gerente;
+import util.UtilProperties;
 
 public class GerenteDAO implements IRepGerente {
-
+	
 	@Override
 	public void atualizar(Gerente gerente) {
 		try {

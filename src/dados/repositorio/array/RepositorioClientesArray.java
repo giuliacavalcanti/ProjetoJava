@@ -1,13 +1,14 @@
 package dados.repositorio.array;
 
 import modelo.cliente.Cliente;
+import util.UtilProperties;
 import dados.repositorio.interfaces.IRepCliente;
 /*
  *
  * @author 1545-6 IRON V4
  */
 public class RepositorioClientesArray implements IRepCliente{
-//    public static final int TAM_CACHE_CONTAS = 100;//vai para a Interface
+	public static final int TAM_CACHE_CLIENTES = Integer.parseInt(UtilProperties.getConfig("TAM_CACHE"));
     private Cliente clientes[];
     private int indice;
 
