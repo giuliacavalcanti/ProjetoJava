@@ -17,12 +17,13 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import br.com.framework.EntidadeGenerica;
+import java.io.Serializable;
 import modelo.conta.Conta;
 import modelo.gerente.Gerente;
 
 @Entity
 @Table (name= "tb_cliente")
-public class Cliente extends EntidadeGenerica implements Comparable<Cliente> {
+public class Cliente extends EntidadeGenerica implements Comparable<Cliente>, Serializable{
 	
     @Column ( name="nome")
     private String nome;
