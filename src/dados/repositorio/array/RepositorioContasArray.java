@@ -6,6 +6,7 @@
 package dados.repositorio.array;
 
 import modelo.conta.Conta;
+import util.UtilProperties;
 import dados.repositorio.interfaces.IRepConta;
 
 /**
@@ -13,7 +14,7 @@ import dados.repositorio.interfaces.IRepConta;
  * @author 1545-6 IRON V4
  */
 public class RepositorioContasArray implements IRepConta{
-//    public static final int TAM_CACHE_CONTAS = 100;
+	public static final int TAM_CACHE_CONTAS = Integer.parseInt(UtilProperties.getConfig("TAM_CACHE"));
     private Conta contas[];
     private int indice;
 

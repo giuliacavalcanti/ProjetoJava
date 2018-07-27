@@ -1,4 +1,4 @@
-package util;
+package dados.repositorio.jdbc.clientedao;
 
 import java.io.FileNotFoundException;
 import java.sql.Connection;
@@ -9,6 +9,7 @@ import java.sql.Statement;
 
 
 import util.JDBCConnectionUtil;
+import util.PropertySQL;
 import dados.repositorio.interfaces.IRepCliente;
 import modelo.cliente.Cliente;
 import modelo.cliente.Endereco;
@@ -23,7 +24,7 @@ public class DaoCliente implements IRepCliente {
 	public void atualizar(Cliente cliente) {
 		try {
 			connection = JDBCConnectionUtil.getConnection();
-			String sql = ppSQL.sqlSentences("update"); 
+			String sql = ppSQL.sqlSentences("updateCliente"); 
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, cliente.getNome());
 			if(cliente.getEndereco() != null) {
@@ -52,7 +53,7 @@ public class DaoCliente implements IRepCliente {
 	public Cliente consultar(String c) {
 		try {
 			connection = JDBCConnectionUtil.getConnection();
-			String sql = ppSQL.sqlSentences("select"); 
+			String sql = ppSQL.sqlSentences("selectCliente"); 
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, c);
 			ResultSet rs = stmt.executeQuery(sql);
@@ -82,7 +83,7 @@ public class DaoCliente implements IRepCliente {
 	public void inserir(Cliente cliente) {
 		try {
 			connection = JDBCConnectionUtil.getConnection();
-			String sql = ppSQL.sqlSentences("inserir"); 
+			String sql = ppSQL.sqlSentences("inserirCliente"); 
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1, cliente.getNome());
 			if(cliente.getEndereco() != null) {
@@ -110,7 +111,7 @@ public class DaoCliente implements IRepCliente {
 	public void remover(Cliente cliente) {
 		try {
 			connection = JDBCConnectionUtil.getConnection();
-			String sql = ppSQL.sqlSentences("remover");
+			String sql = ppSQL.sqlSentences("removerCliente");
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setString(1,cliente.getId());
 			stmt.executeUpdate(sql);

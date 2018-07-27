@@ -7,6 +7,12 @@ package view.fachada;
 
 import modelo.cad.CadCliente;
 import modelo.cad.CadConta;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
 import dados.repositorio.array.RepositorioClientesArray;
 import modelo.cliente.Cliente;
 import dados.repositorio.array.RepositorioContasArray;
@@ -14,6 +20,8 @@ import dados.repositorio.interfaces.IRepCliente;
 import dados.repositorio.interfaces.IRepConta;
 import exception.fachada.ClienteNuloException;
 import modelo.conta.Conta;
+import util.FactoryCliente;
+import util.UtilProperties;
 
 /**
  *
@@ -23,8 +31,14 @@ public class FachadaCad {
     private static FachadaCad instancia;
     private CadConta contas;
     private CadCliente clientes;
+    
+    private Properties pConfig = new Properties();
+	private Properties pSql = new Properties();
+	private Properties pExceptions = new Properties();
+	
+	
 
-    public FachadaCad() {
+    public FachadaCad() {	
         initCad();
     }
     
@@ -36,10 +50,16 @@ public class FachadaCad {
     }
 
     private void initCad() {
+    	
+    	carregarProperties();
+    	
+    	FactoryCliente fclt = new FactoryCliente();
+    	
+    	
         IRepConta repConta = new RepositorioContasArray();
         contas = new CadConta(repConta);
-        IRepCliente repCliente = new RepositorioClientesArray();
-        clientes = new CadCliente(repCliente);
+        //IRepCliente repCliente = new RepositorioClientesArray();
+        clientes = new CadCliente(fclt.verificarRepositorio(Integer.parseInt(UtilProperties.getConfig("RepositorioCliente"))));
     }
     
     public void atualizar(Cliente c) {
@@ -90,5 +110,33 @@ public class FachadaCad {
 
     public void transferir(String origem,String destino, double val) {
         contas.transferir(origem, destino, val);
+    }
+    
+    public void carregarProperties() {
+    	
+    	FileInputStream fis = null;
+    	
+    	try {
+    		
+			fis = new FileInputStream("config.properties");
+			pConfig.load(fis);
+			UtilProperties.setConfig(pConfig);
+			fis.close();
+		
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			
+			try {
+				fis.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
     }
 }
