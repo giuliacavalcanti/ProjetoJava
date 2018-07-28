@@ -3,23 +3,28 @@ package util;
 import dados.repositorio.array.RepositorioClientesArray;
 import dados.repositorio.interfaces.IRepCliente;
 import dados.repositorio.jdbc.clientedao.DaoCliente;
+import dados.repositorio.serializacao.RepositorioClientesSer;
 import dados.repositorio.treeset.RepositorioClientesTreeset;
 
 public class FactoryCliente {
 	
-	public IRepCliente verificarRepositorio(int tipoRepo) {
+	public IRepCliente verificarRepositorio(TipoRepo tipoRepo) {
+		
 		
 		IRepCliente repo;
 		
 		switch (tipoRepo) {
-		case 1:
+		case ARRAY:
 			repo = instanciarRepClientesArray();
 			break;
-		case 2:
+		case TREESET:
 			repo = instanciarRepClientesTreeset();
 			break;
-		case 3:
+		case JDBC:
 			repo = instanciarRepClientesJDBC();
+			break;
+		case SERIAL:
+			repo = instanciarRepClientesSer();
 			break;
 		
 		default:
@@ -43,6 +48,11 @@ public class FactoryCliente {
 	public RepositorioClientesTreeset instanciarRepClientesTreeset() {
 	
 		return new RepositorioClientesTreeset();
+	}
+	
+	public RepositorioClientesSer instanciarRepClientesSer() {
+		
+		return new RepositorioClientesSer();
 	}
 	
 	

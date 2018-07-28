@@ -5,22 +5,18 @@
  */
 package view.fachada;
 
-import modelo.cad.CadCliente;
-import modelo.cad.CadConta;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-import dados.repositorio.array.RepositorioClientesArray;
-import modelo.cliente.Cliente;
-import dados.repositorio.array.RepositorioContasArray;
-import dados.repositorio.interfaces.IRepCliente;
-import dados.repositorio.interfaces.IRepConta;
 import exception.fachada.ClienteNuloException;
+import modelo.cad.CadCliente;
+import modelo.cad.CadConta;
+import modelo.cliente.Cliente;
 import modelo.conta.Conta;
 import util.FactoryCliente;
+import util.FactoryConta;
 import util.UtilProperties;
 
 /**
@@ -54,10 +50,10 @@ public class FachadaCad {
     	carregarProperties();
     	
     	FactoryCliente fclt = new FactoryCliente();
-    	
-    	
-        IRepConta repConta = new RepositorioContasArray();
-        contas = new CadConta(repConta);
+    	FactoryConta fcnt = new FactoryConta();
+    	 
+        //IRepConta repConta = new RepositorioContasArray();
+        contas = new CadConta(fcnt.verificarRepositorio(Integer.parseInt(UtilProperties.getConfig("RepositorioConta"))));;
         //IRepCliente repCliente = new RepositorioClientesArray();
         clientes = new CadCliente(fclt.verificarRepositorio(Integer.parseInt(UtilProperties.getConfig("RepositorioCliente"))));
     }
@@ -121,6 +117,16 @@ public class FachadaCad {
 			fis = new FileInputStream("config.properties");
 			pConfig.load(fis);
 			UtilProperties.setConfig(pConfig);
+			fis.close();
+			
+			fis = new FileInputStream("SQLSentences.properties");
+			pSql.load(fis);
+			UtilProperties.setConfig(pSql);
+			fis.close();
+			
+			fis = new FileInputStream("exceptions.properties");
+			pExceptions.load(fis);
+			UtilProperties.setConfig(pExceptions);
 			fis.close();
 		
 		} catch (FileNotFoundException e) {

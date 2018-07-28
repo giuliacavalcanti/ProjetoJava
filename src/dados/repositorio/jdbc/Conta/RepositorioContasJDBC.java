@@ -2,10 +2,15 @@
 package dados.repositorio.jdbc.Conta;
 
 import dados.repositorio.interfaces.IRepConta;
+import dados.repositorio.jdbc.clientedao.DaoCliente;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import modelo.conta.Conta;
 import util.UtilProperties;
 
@@ -23,11 +28,11 @@ public class RepositorioContasJDBC implements IRepConta{
                     stmt.executeUpdate(UtilProperties.getSql("inserirConta"));
                     commitTransaction();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e);
 			try {
 				rollbackTransaction();
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e1);
 			}
 		}
 		
@@ -43,7 +48,7 @@ public class RepositorioContasJDBC implements IRepConta{
                     commitTransaction();
 		
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e);
 		}
 		
 	}
@@ -61,11 +66,11 @@ public class RepositorioContasJDBC implements IRepConta{
                             double saldo = rs.getDouble("Saldo");
                     }
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e);
 			try {
 				rollbackTransaction();
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e1);
 			}
 		}
 		return null;
@@ -83,11 +88,11 @@ public class RepositorioContasJDBC implements IRepConta{
                     commitTransaction();
 		
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e);
 			try {
 				rollbackTransaction();
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e1);
 			}
 		}
 	}

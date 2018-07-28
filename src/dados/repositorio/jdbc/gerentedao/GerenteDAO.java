@@ -10,8 +10,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import dados.repositorio.interfaces.IRepGerente;
+import dados.repositorio.jdbc.clientedao.DaoCliente;
 import modelo.gerente.Gerente;
 import util.UtilProperties;
 
@@ -22,7 +25,7 @@ public class GerenteDAO implements IRepGerente {
 		try {
             
 			Connection connection = getConnection();
-                    String sql = "UPDATE CONTA SET NOME = ? TELEFONE = ? CELULAR = ? EMAIL = ? WHERE ID = ?";
+                    String sql = UtilProperties.getSql("updateGerente");
                     PreparedStatement stmt = connection.prepareStatement(sql);
                     stmt.setString(1, gerente.getNome());
                     stmt.setString(2, gerente.getTelefone());
@@ -33,11 +36,11 @@ public class GerenteDAO implements IRepGerente {
                     commitTransaction();
 		
 		} catch (SQLException e) {
-			e.printStackTrace();
+			Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e);
 			try {
 				rollbackTransaction();
 			} catch (SQLException e1) {
-				e1.printStackTrace();
+				Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e1);
 			}
 		}
 	}
@@ -47,7 +50,7 @@ public class GerenteDAO implements IRepGerente {
 
     	try {
     		Connection connection = getConnection();
-    		String sql = "SELECT FROM TB_GERENTE WHERE id = ?";
+    		String sql = UtilProperties.getSql("selectGerente");
     		PreparedStatement stmt = connection.prepareStatement(sql);
     		stmt.setString(1, id);
     		ResultSet rs = stmt.executeQuery(sql);
@@ -60,11 +63,11 @@ public class GerenteDAO implements IRepGerente {
                 
     		}
     	} catch (SQLException e) {
-    		e.printStackTrace();
+    		Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e);
     	} try {
 			rollbackTransaction();
 		} catch (SQLException e1) {
-			e1.printStackTrace();
+			Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e1);
 		}
     	return null;
     	
@@ -75,7 +78,7 @@ public class GerenteDAO implements IRepGerente {
 	public void inserir(Gerente gerente) {
 		try {
             Connection connection = getConnection();
-            String sql = "INSERT INTO TB_GERENTE VALUES (?, ?, ?, ?, ?)";
+            String sql = UtilProperties.getSql("inserirGerente");
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, gerente.getId());
             stmt.setString(2, gerente.getNome());
@@ -86,11 +89,11 @@ public class GerenteDAO implements IRepGerente {
             stmt.executeUpdate(sql);
             commitTransaction();
 } catch (SQLException e) {
-	e.printStackTrace();
+	Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e);
 	try {
 		rollbackTransaction();
 	} catch (SQLException e1) {
-		e1.printStackTrace();
+		Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e1);
 	}
 }
 		
@@ -100,15 +103,15 @@ public class GerenteDAO implements IRepGerente {
 	public void remover(Gerente gerente) {
 		try {
             Connection connection = getConnection();
-            String sql = "DELETE FROM TB_GERENTE WHERE ID = ? ";
+            String sql = UtilProperties.getSql("removerGerente");
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1,gerente.getId());
             stmt.executeUpdate(sql);
             commitTransaction();
 
-} catch (SQLException e) {
-	e.printStackTrace();
-}
+	} catch (SQLException e) {
+		Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e);
+	}
 
 		
 	}
