@@ -8,21 +8,21 @@ import dados.repositorio.serializacao.RepositorioContasSer;
 
 public class FactoryConta {
 	
-	public IRepConta verificarRepositorio(int tipoRepo) {
+	public IRepConta verificarRepositorio(TipoRepo tipoRepo) {
 		
 		IRepConta repo;
 		
 		switch (tipoRepo) {
-		case 1:
+		case ARRAY:
 			repo = instanciarRepContasArray();
 			break;
-		case 2:
+		case HASHMAP:
 			repo = instanciarRepContasHashmap();
 			break;
-		case 3:
+		case JDBC:
 			repo = instanciarRepContasJDBC();
 			break;
-		case 4:
+		case SERIAL:
 			repo = instanciarRepContasSerial();
 			break;
 			

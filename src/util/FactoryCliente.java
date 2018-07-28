@@ -8,21 +8,22 @@ import dados.repositorio.treeset.RepositorioClientesTreeset;
 
 public class FactoryCliente {
 	
-	public IRepCliente verificarRepositorio(int tipoRepo) {
+	public IRepCliente verificarRepositorio(TipoRepo tipoRepo) {
+		
 		
 		IRepCliente repo;
 		
 		switch (tipoRepo) {
-		case 1:
+		case ARRAY:
 			repo = instanciarRepClientesArray();
 			break;
-		case 2:
+		case TREESET:
 			repo = instanciarRepClientesTreeset();
 			break;
-		case 3:
+		case JDBC:
 			repo = instanciarRepClientesJDBC();
 			break;
-		case 4:
+		case SERIAL:
 			repo = instanciarRepClientesSer();
 			break;
 		
