@@ -3,6 +3,7 @@ package util;
 import dados.repositorio.array.RepositorioClientesArray;
 import dados.repositorio.interfaces.IRepCliente;
 import dados.repositorio.jdbc.clientedao.DaoCliente;
+import dados.repositorio.serializacao.RepositorioClientesSer;
 import dados.repositorio.treeset.RepositorioClientesTreeset;
 
 public class FactoryCliente {
@@ -20,6 +21,9 @@ public class FactoryCliente {
 			break;
 		case 3:
 			repo = instanciarRepClientesJDBC();
+			break;
+		case 4:
+			repo = instanciarRepClientesSer();
 			break;
 		
 		default:
@@ -43,6 +47,11 @@ public class FactoryCliente {
 	public RepositorioClientesTreeset instanciarRepClientesTreeset() {
 	
 		return new RepositorioClientesTreeset();
+	}
+	
+	public RepositorioClientesSer instanciarRepClientesSer() {
+		
+		return new RepositorioClientesSer();
 	}
 	
 	

@@ -6,11 +6,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import util.JDBCConnectionUtil;
 import util.PropertySQL;
 import dados.repositorio.interfaces.IRepCliente;
+import dados.repositorio.serializacao.RepositorioClientesSer;
 import modelo.cliente.Cliente;
 import modelo.cliente.Endereco;
 
@@ -37,12 +39,12 @@ public class DaoCliente implements IRepCliente {
 		
 		} catch (SQLException | FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e);
 			try {
 				JDBCConnectionUtil.rollbackTransaction();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e1);
 			}
 		}
 	}
@@ -63,16 +65,16 @@ public class DaoCliente implements IRepCliente {
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e);
 			try {
 				JDBCConnectionUtil.rollbackTransaction();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e1);
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e);
 		}
 		return null;
 	}
@@ -94,12 +96,12 @@ public class DaoCliente implements IRepCliente {
 		
 		} catch (SQLException | FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e);
 			try {
 				JDBCConnectionUtil.rollbackTransaction();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e1);
 			}
 		}
 		
@@ -119,10 +121,10 @@ public class DaoCliente implements IRepCliente {
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e);
 		}
 		
 	}
@@ -138,7 +140,7 @@ public class DaoCliente implements IRepCliente {
 		
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Logger.getLogger(DaoCliente.class.getName()).log(Level.SEVERE, null, e);
 		}
 		
 	}
