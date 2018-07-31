@@ -8,12 +8,11 @@ import dados.repositorio.treeset.RepositorioClientesTreeset;
 
 public class FactoryCliente {
 	
-	public IRepCliente verificarRepositorio(TipoRepo tipoRepo) {
-		
+	public IRepCliente verificarRepositorio(int valor) {
 		
 		IRepCliente repo;
 		
-		switch (tipoRepo) {
+		switch (TipoRepo.forInt(valor)) {
 		case ARRAY:
 			repo = instanciarRepClientesArray();
 			break;

@@ -8,11 +8,11 @@ import dados.repositorio.serializacao.RepositorioContasSer;
 
 public class FactoryConta {
 	
-	public IRepConta verificarRepositorio(TipoRepo tipoRepo) {
+	public IRepConta verificarRepositorio(int valor) {
 		
 		IRepConta repo;
 		
-		switch (tipoRepo) {
+		switch (TipoRepo.forInt(valor)) {
 		case ARRAY:
 			repo = instanciarRepContasArray();
 			break;
