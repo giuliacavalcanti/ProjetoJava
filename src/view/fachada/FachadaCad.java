@@ -30,7 +30,7 @@ public class FachadaCad {
     
     private Properties pConfig = new Properties();
 	private Properties pSql = new Properties();
-	private Properties pExceptions = new Properties();
+	private Properties pException = new Properties();
 	
 	
 
@@ -108,35 +108,23 @@ public class FachadaCad {
         contas.transferir(origem, destino, val);
     }
     
-    public void carregarProperties() {
+    public void carregarConfig()  {
     	
     	FileInputStream fis = null;
     	
     	try {
     		
-			fis = new FileInputStream("config.properties");
+    		fis = new FileInputStream("C:\\Users\\Lucas\\Repositórios\\ProjetoJava\\src\\util\\config.properties");
 			pConfig.load(fis);
 			UtilProperties.setConfig(pConfig);
-			fis.close();
-			
-			fis = new FileInputStream("SQLSentences.properties");
-			pSql.load(fis);
-			UtilProperties.setConfig(pSql);
-			fis.close();
-			
-			fis = new FileInputStream("exceptions.properties");
-			pExceptions.load(fis);
-			UtilProperties.setConfig(pExceptions);
-			fis.close();
-		
-		} catch (FileNotFoundException e) {
+    		
+    	} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
+		} catch (IOException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 		} finally {
-			
 			try {
 				fis.close();
 			} catch (IOException e) {
@@ -144,5 +132,64 @@ public class FachadaCad {
 				e.printStackTrace();
 			}
 		}
+    }
+    	 public void carregarSql()  {
+    	    	
+    	    	FileInputStream fis = null;
+    	    	
+    	    	try {
+    	    		
+    	    		fis = new FileInputStream("C:\\Users\\Lucas\\Repositórios\\ProjetoJava\\src\\util\\SQLSentences.properties");
+    				pSql.load(fis);
+    				UtilProperties.setSql(pSql);
+    	    		
+    	    	} catch (FileNotFoundException e) {
+    				// TODO Auto-generated catch block
+    				e.printStackTrace();
+    			} catch (IOException e1) {
+    				// TODO Auto-generated catch block
+    				e1.printStackTrace();
+    			} finally {
+    				try {
+    					fis.close();
+    				} catch (IOException e) {
+    					// TODO Auto-generated catch block
+    					e.printStackTrace();
+    				}
+    			}
+    }
+    
+    	 public void carregarException()  {
+ 	    	
+ 	    	FileInputStream fis = null;
+ 	    	
+ 	    	try {
+ 	    		
+ 	    		fis = new FileInputStream("C:\\Users\\Lucas\\Repositórios\\ProjetoJava\\src\\util\\SQLSentences.properties");
+ 				pException.load(fis);
+ 				UtilProperties.setException(pException);
+ 	    		
+ 	    	} catch (FileNotFoundException e) {
+ 				// TODO Auto-generated catch block
+ 				e.printStackTrace();
+ 			} catch (IOException e1) {
+ 				// TODO Auto-generated catch block
+ 				e1.printStackTrace();
+ 			} finally {
+ 				try {
+ 					fis.close();
+ 				} catch (IOException e) {
+ 					// TODO Auto-generated catch block
+ 					e.printStackTrace();
+ 				}
+ 			}
+ }
+    	 
+    public void carregarProperties() {
+    	
+    	carregarConfig();
+    	carregarSql();
+    	carregarException();
+    	
     }
 }

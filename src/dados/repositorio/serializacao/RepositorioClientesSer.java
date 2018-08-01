@@ -50,6 +50,7 @@ public class RepositorioClientesSer implements IRepCliente{
         FileOutputStream fos = new FileOutputStream(g.getCpf());
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         oos.writeObject(g);
+        oos.close();
     }
     
     public static Cliente lerCliente(String arquivo) throws FileNotFoundException,IOException, ClassNotFoundException {

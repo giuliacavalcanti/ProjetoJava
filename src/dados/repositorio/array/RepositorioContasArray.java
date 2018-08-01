@@ -5,9 +5,9 @@
  */
 package dados.repositorio.array;
 
+import dados.repositorio.interfaces.IRepConta;
 import modelo.conta.Conta;
 import util.UtilProperties;
-import dados.repositorio.interfaces.IRepConta;
 
 /**
  *
@@ -32,38 +32,54 @@ public class RepositorioContasArray implements IRepConta{
     }
     
     public void atualizar(Conta conta){
-        if(!(existe(conta.getId())))
+       
+    	if(!(existe(conta.getNumero())))
             System.out.println("Conta nao existente");
         else
-            contas[this.procurarIndice(conta.getId())]=conta;
+            contas[this.procurarIndice(conta.getNumero())]=conta;
     }
     
     public void remover(Conta conta){
-        if(!(existe(conta.getId())))
+        if(!(existe(conta.getNumero())))
             System.out.println("Conta nao existente");
         else{
-            contas[this.procurarIndice(conta.getId())] = contas[indice];
+            contas[this.procurarIndice(conta.getNumero())] = contas[indice];
             contas[indice--] = null;
         }
     }
     
     public int procurarIndice(String numeroConta){
         int i=0;
-        while(!(contas[i].getId().equals(numeroConta)))
-            i++;
-        return i;
+        if(existe(numeroConta)) {
+        	for(i=0;i<TAM_CACHE_CONTAS;i++) {
+            	if((contas[i].getNumero().equals(numeroConta))) {
+            		return i;
+            	}
+            }
+        }
+                
+        return -1;
     }
     
     public boolean existe(String numeroConta){
         for(int i=0;i<TAM_CACHE_CONTAS;i++){
-            if(contas[i].getId().equals(numeroConta))
-                return true;
+        	if(contas[i] != null) {
+                if(contas[i].getNumero().equals(numeroConta))
+                    return true;	
+        	}
         }
         return false;
     }
     
     public Conta consultar(String numeroConta){
-                    return contas[this.procurarIndice(numeroConta)];
+    	
+    	
+    	if(existe(numeroConta)) {
+            return contas[this.procurarIndice(numeroConta)];
+    	} else {
+    		return null;
+    	}
+            
     }
 
 //    @Override

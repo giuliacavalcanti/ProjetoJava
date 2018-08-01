@@ -40,11 +40,6 @@ public abstract class Conta extends EntidadeGenerica implements Serializable {
    public Conta() {
 	  super("");
    }
-   
-   
-    
-    
-    
     
     public Conta(double saldo, String numero,Cliente cliente,String id) {
             super(id);
